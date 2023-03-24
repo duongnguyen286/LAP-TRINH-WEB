@@ -78,3 +78,15 @@ li {
     background-color: white;
     height: 100%;
 }
+
+.col-3 {
+    width: calc(100% / 3);
+    text-align: center;
+    display: flex;
+}
+
+.footer {
+    height: 284px;
+    background-color: #5c6873;
+    margin-top: 70px;
+}
