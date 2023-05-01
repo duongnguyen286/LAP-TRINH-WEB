@@ -12,6 +12,10 @@ a:hover {
     opacity: 0.6;
 }
 
+.pd8 {
+    padding: 8px 0;
+}
+
 body {
     background-image: linear-gradient(to right, #c6ffdd, #fbd786, #f7797d);
     display: flex;
@@ -38,6 +42,7 @@ body {
     justify-content: space-between;
     align-items: center;
     position: fixed;
+    z-index: 1;
 }
 
 .logo {
@@ -166,4 +171,54 @@ input[type='submit']:hover {
 
 .signup_link a:hover {
     text-decoration: underline;
+}
+
+
+.product_list {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding-top: 36px;
+    padding-bottom: 36px;
+    margin-bottom: -25px;
+}
+
+.product_item {
+    width: 30%;
+    text-align: center;
+    border: 2px solid black;
+    margin-bottom: 25px;
+}
+
+.product_item {
+    position: relative;
+}
+
+.product_item img {
+    width: 100%;
+}
+
+.product_item .ID {
+    position: absolute;
+    left: 0px;
+    background-color: #a94442;
+    color: white;
+    padding: 2px 7px;
+}
+
+.product_item .description {
+    background-color: #8a6969;
+    color: white;
+    margin-top: -4px;
+    padding: 8px 0;
+}
+
+.product_item .view {
+    padding: 8px 0;
+
+    background-color: #38cfdc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
