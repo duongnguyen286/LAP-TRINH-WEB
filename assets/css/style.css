@@ -64,7 +64,7 @@ li {
     min-height: 700px;
     display: flex;
     justify-content: center;
-    background-color: pink;
+    /* background-color: pink; */
 }
 
 .footer {
