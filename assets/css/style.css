@@ -81,6 +81,7 @@ li {
     background-color: white;
     align-self: center;
     border-radius: 15px;
+    box-shadow: 1px 1px 5px 1px #AAA;
 }
 
 .main-content .container h1 {
@@ -187,11 +188,8 @@ input[type='submit']:hover {
 .product_item {
     width: 30%;
     text-align: center;
-    border: 2px solid black;
+    box-shadow: 1px 1px 5px 1px #AAA;
     margin-bottom: 25px;
-}
-
-.product_item {
     position: relative;
 }
 
