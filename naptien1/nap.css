@@ -1,0 +1,46 @@
+div {
+    display: block;
+    font-size: large;
+}
+.c-layout-full{
+    width: 100%;
+    height: 100px;
+}
+.c-layout-sidebar-content {
+    background-color: white;
+    overflow: hidden;
+    padding: 10px 0 30px 0;
+}
+.c-title {
+    font-weight: 400 !important;
+}
+.c-line-empty{
+    width: 100px;
+    height: 3px;
+    background-color: red;
+    margin: 0 0 30px 0;
+}
+c.col-md-3 control-label{
+    text-align: left;
+}
+.nap{
+    background-color: aqua;
+    border-color: aqua;
+    font-size: 14px;
+    padding: 7px 20px 5px 20px;
+}
+.form-group{
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+    padding: 8px;
+    line-height: 1.42857;
+    vertical-align: top;
+    border-top: 1px solid #e7ecf1;
+}
