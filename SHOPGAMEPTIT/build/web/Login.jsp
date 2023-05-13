@@ -1,7 +1,7 @@
 <%-- 
     Document   : Login
     Created on : May 13, 2023, 8:06:26 PM
-    Author     : LENOVO
+    Author     : Duong Nguyen
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -24,15 +24,19 @@
         <div class="main-content">
             <div class="container">
                 <h1>Login</h1>
-                <form action="">
+                <form action="login" method="post">
+                    <div style="color: red">
+                        ${mess}
+                    </div>
+                    
                     <div class="form-control">
-                        <input type="text" id="username" placeholder="Username" />
+                        <input name="user" type="text" id="username" placeholder="Username" />
                         <span></span>
                         <small></small>
                     </div>
                     
                     <div class="form-control">
-                        <input type="password" id="password" placeholder="Password" />
+                        <input name="pass" type="password" id="password" placeholder="Password" />
                         <span></span>
                         <small></small>
                     </div>
@@ -45,7 +49,7 @@
 
         <jsp:include page="Footer.jsp"></jsp:include>
 
-        <script src="./app.js"></script>
+<!--        <script src="./app.js"></script>-->
     </div>
 </body>
 

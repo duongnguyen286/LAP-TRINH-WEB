@@ -1,7 +1,7 @@
 <%-- 
     Document   : Register
     Created on : May 13, 2023, 8:09:04 PM
-    Author     : LENOVO
+    Author     : Duong Nguyen
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

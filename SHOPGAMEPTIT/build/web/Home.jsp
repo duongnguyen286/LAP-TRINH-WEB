@@ -16,9 +16,8 @@
     <body>
         <div class="wrapper">
             <jsp:include page="Header.jsp"></jsp:include>
-
-                <div class="main-content">
-                    <div class="product_list">
+            <div class="main-content">
+                <div class="product_list">
                     <c:forEach items="${ListP}" var="o">
                         <div class="product_item">
                             <div class="image">

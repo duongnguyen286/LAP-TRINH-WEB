@@ -16,7 +16,7 @@
             width: 80%;
             height: auto;
             display: inline-block;
-            padding: 8px 0;
+            padding-top: 8px;
         }
 
         h1 {

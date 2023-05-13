@@ -6,6 +6,7 @@
 package dao;
 
 import context.DBContext;
+import entity.Account;
 import entity.Product;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -48,9 +49,8 @@ public class DAO {
         return list;
     }
 
-    // test 13/05/23
     public Product getProductbyID(String id) {
-        String query = "select * from product_item "
+        String query = "select * from product_item\n"
                 + "where id = ?";
         try {
             conn = new DBContext().getConnection();//mo ket noi voi sql
@@ -75,6 +75,28 @@ public class DAO {
         return null;
     }
 
+    public Account checkLogin(String username, String pass) {
+        String query = "select * from account\n"
+                + "where username = ? and pass= ?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, username);
+            ps.setString(2, pass);
+            rs=ps.executeQuery();
+            while (rs.next()){
+                return new Account(
+                        rs.getInt(1), 
+                        rs.getString(2), 
+                        rs.getString(3), 
+                        rs.getInt(4), 
+                        rs.getString(5));
+            }
+        } catch (Exception e) {
+        }
+        return null;
+    }
+
     public static void main(String[] args) {
         DAO dao = new DAO();
         List<Product> list = dao.getAlProduct();
@@ -85,6 +107,8 @@ public class DAO {
         String testString = "2";
         Product a = dao.getProductbyID(testString);
         System.out.println(a);
+        Account z = dao.checkLogin("duong", "12");
+        System.out.println(z);
     }
 
     public Product getProductbyID() {

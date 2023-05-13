@@ -1,13 +1,15 @@
 <%-- 
     Document   : Header
     Created on : May 12, 2023, 8:33:29 PM
-    Author     : LENOVO
+    Author     : Duong Nguyen
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <div class="header">
     <a class="logo" href="home">SHOPGAMEPTIT</a>
     <ul class="nav">
+
+
         <li>
             <a href="#">TRANG CHỦ</a>
         </li>
