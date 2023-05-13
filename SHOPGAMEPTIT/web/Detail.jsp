@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -83,59 +85,43 @@
 
 <body>
     <div class="wrapper">
-        <div class="header">
-            <a class="logo" href="./index.html">SHOPGAMEPTIT</a>
-            <ul class="nav">
-                <li>
-                    <a href="#">TRANG CHỦ</a>
-                </li>
-                <li>NẠP TIỀN</li>
-                <li>LỊCH SỬ</li>
-                <li>
-                    <a href="./login.html">ĐĂNG NHẬP</a>
-                </li>
-                <li>
-                    <a href="./register.html">ĐĂNG KÝ</a>
-                </li>
-            </ul>
-        </div>
+        <jsp:include page="Header.jsp"></jsp:include>
 
         <div class="main-content">
             <table>
                 <tr>
                     <th>ID:</th>
-                    <td>SP001</td>
+                    <td>${detail.id}</td>
                 </tr>
                 <tr>
                     <th>Mô tả:</th>
-                    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent euismod enim nec mauris
-                        volutpat ultrices. Etiam ut odio quis ipsum maximus convallis.</td>
+                    <td>${detail.descripsion}</td>
                 </tr>
                 <tr>
                     <th>Rank:</th>
                     <td>
-                        <span class="badge badge-success">4 sao</span>
+                        <span class="badge badge-success">${detail.rank}</span>
                     </td>
                 </tr>
                 <tr>
                     <th>Ngọc:</th>
-                    <td>Bảo vệ cơ bản</td>
+                    <td>${detail.ngoc}</td>
                 </tr>
                 <tr>
                     <th>Tướng:</th>
-                    <td>Darius</td>
+                    <td>${detail.tuong}</td>
                 </tr>
                 <tr>
                     <th>Trang Phục:</th>
-                    <td>Đại tá chiến tranh Darius</td>
+                    <td>${detail.trang_phuc}</td>
                 </tr>
                 <tr>
                     <th>Loại Nick:</th>
-                    <td>Nick thường</td>
+                    <td>${detail.loai_nick}</td>
                 </tr>
                 <tr>
                     <th>Giá:</th>
-                    <td>100.000 VNĐ</td>
+                    <td>${detail.price}</td>
                 </tr>
             </table>
             <button>MUA</button>
@@ -145,9 +131,7 @@
 
         </div>
 
-        <div class="footer">
-            <p>Copyright &copy; by SHOPGAMEPTIT.COM</p>
-        </div>
+        <jsp:include page="Footer.jsp"></jsp:include>
     </div>
 </body>
 
