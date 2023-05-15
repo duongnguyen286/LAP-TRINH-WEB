@@ -6,22 +6,19 @@
 package control;
 
 import dao.DAO;
-import entity.Account;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Duong Nguyen
  */
-@WebServlet(name = "LoginControl", urlPatterns = {"/login"})
-public class LoginControl extends HttpServlet {
+@WebServlet(name = "AddProductControl", urlPatterns = {"/addproduct"})
+public class AddProductControl extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,22 +32,20 @@ public class LoginControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
-        String username = request.getParameter("user");
-        String pass = request.getParameter("pass");
+        request.setCharacterEncoding("UTF-8");
+        String image = request.getParameter("image");
+        String id = request.getParameter("id");
+        String description = request.getParameter("description");
+        String rank = request.getParameter("rank");
+        String ngoc = request.getParameter("ngoc");
+        String tuong = request.getParameter("tuong");
+        String trang_phuc = request.getParameter("trang_phuc");
+        String loai_nick = request.getParameter("loai_nick");
+        String price = request.getParameter("price");
+        
         DAO dao = new DAO();
-        Account a = dao.checkLogin(username, pass);
-
-        if (a == null) {
-
-            request.setAttribute("mess", "Tài khoản hoặc Mật khẩu không chính xác");
-            request.getRequestDispatcher("Login.jsp").forward(request, response);
-        } else {
-            HttpSession session = request.getSession();
-            session.setAttribute("account", a);
-            session.setMaxInactiveInterval(3600);
-            request.getRequestDispatcher("home").forward(request, response);
-        }
+        dao.addProduct(image, id, description, rank, ngoc, tuong, trang_phuc, loai_nick, price);
+        response.sendRedirect("qlsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

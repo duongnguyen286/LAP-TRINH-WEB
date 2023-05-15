@@ -49,7 +49,7 @@
 
         <jsp:include page="Footer.jsp"></jsp:include>
 
-<!--        <script src="./app.js"></script>-->
+        <!--<script src="app.js"></script>-->
     </div>
 </body>
 

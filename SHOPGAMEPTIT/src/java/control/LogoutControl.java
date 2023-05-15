@@ -5,8 +5,6 @@
  */
 package control;
 
-import dao.DAO;
-import entity.Account;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -20,8 +18,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author Duong Nguyen
  */
-@WebServlet(name = "LoginControl", urlPatterns = {"/login"})
-public class LoginControl extends HttpServlet {
+@WebServlet(name = "LogoutControl", urlPatterns = {"/logout"})
+public class LogoutControl extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,22 +33,9 @@ public class LoginControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
-        String username = request.getParameter("user");
-        String pass = request.getParameter("pass");
-        DAO dao = new DAO();
-        Account a = dao.checkLogin(username, pass);
-
-        if (a == null) {
-
-            request.setAttribute("mess", "Tài khoản hoặc Mật khẩu không chính xác");
-            request.getRequestDispatcher("Login.jsp").forward(request, response);
-        } else {
-            HttpSession session = request.getSession();
-            session.setAttribute("account", a);
-            session.setMaxInactiveInterval(3600);
-            request.getRequestDispatcher("home").forward(request, response);
-        }
+        HttpSession session = request.getSession();
+        session.removeAttribute("account");
+        response.sendRedirect("");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

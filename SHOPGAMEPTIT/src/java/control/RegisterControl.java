@@ -8,7 +8,7 @@ package control;
 import dao.DAO;
 import entity.Account;
 import java.io.IOException;
-import java.io.PrintWriter;
+import javafx.scene.control.Alert;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,8 +20,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author Duong Nguyen
  */
-@WebServlet(name = "LoginControl", urlPatterns = {"/login"})
-public class LoginControl extends HttpServlet {
+@WebServlet(name = "RegisterControl", urlPatterns = {"/register"})
+public class RegisterControl extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,21 +35,23 @@ public class LoginControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
-        String username = request.getParameter("user");
+        String username = request.getParameter("username");
         String pass = request.getParameter("pass");
+        String emmai = request.getParameter("email");
+
         DAO dao = new DAO();
-        Account a = dao.checkLogin(username, pass);
-
+        Account a = dao.checkAccountExist(username);
         if (a == null) {
-
-            request.setAttribute("mess", "Tài khoản hoặc Mật khẩu không chính xác");
-            request.getRequestDispatcher("Login.jsp").forward(request, response);
-        } else {
+            dao.sinUpAccount(username, pass, emmai);
+            //giup dang nhap luon
+            a = dao.checkLogin(username, pass);
             HttpSession session = request.getSession();
             session.setAttribute("account", a);
             session.setMaxInactiveInterval(3600);
             request.getRequestDispatcher("home").forward(request, response);
+        }
+        else {
+            response.sendRedirect("Register.jsp");
         }
     }
 

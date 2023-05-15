@@ -47,7 +47,13 @@ public final class Header_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<div class=\"header\">\n");
       out.write("    <a class=\"logo\" href=\"home\">SHOPGAMEPTIT</a>\n");
       out.write("    <ul class=\"nav\">\n");
-      out.write("\n");
+      out.write("        <c:if test=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${sessionScope.account != null}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("\">\n");
+      out.write("            <li class=\"nav-item\">\n");
+      out.write("                <a class=\"nav-link\" href=\"Login.jsp\">Login</a>\n");
+      out.write("            </li>\n");
+      out.write("        </c:if>\n");
       out.write("\n");
       out.write("        <li>\n");
       out.write("            <a href=\"#\">TRANG CHỦ</a>\n");
