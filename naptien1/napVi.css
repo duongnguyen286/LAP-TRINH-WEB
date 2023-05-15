@@ -1,11 +1,16 @@
+
 .modal-dialog {
-    width: 600px;
+    margin: 0px auto;
+    align-content: center;
+    width: 552px;
     margin: 30px auto;
     display: inline-block;
     text-align: left;
     border: 1px solid black;
 }
 .modal-content {
+
+    align-content: center;
     position: relative;
     background-color: #fff;
     border: 1px solid #999;
@@ -31,6 +36,7 @@
     -webkit-transition: back 0.2s ease-out;
 }
 .modal-title {
+    text-align: right;
     font-weight: 500;
     font-size: 18px;
     color: #3f444a;
@@ -67,3 +73,4 @@ ul {
     background-color: #cfdae4;
     text-align: center; 
 }
+
