@@ -14,15 +14,15 @@
     </head>
     <body>
         <h1>Quản lí sản phẩm</h1>
+        <a href="home"><button>HOME</button></a>
         <button id="addsp">Thêm sản phẩm mới</button>
-
         <table>
             <tr>
                 <th>Image</th>
                 <th>ID</th>
                 <th>Nổi bật</th>
                 <th>Rank</th>
-                <th>Ngọc</th>
+                <th>Ngọc 90</th>
                 <th>Tướng</th>
                 <th>Trang phục</th>
                 <th>Trạng thái</th>
@@ -41,7 +41,9 @@
                     <td>${o.loai_nick}</td>
                     <td>${o.price}</td>
                     <td>
-                        <button>Edit</button>
+                        <a href="loadproduct?pid=${o.id}">
+                            <button>Edit</button>
+                        </a>
                         <a href="deleteproduct?pid=${o.id}">
                             <button>Delete</button>
                         </a>

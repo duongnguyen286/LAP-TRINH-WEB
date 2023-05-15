@@ -63,19 +63,19 @@ public final class QLSP_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    </head>\n");
       out.write("    <body>\n");
       out.write("        <h1>Quản lí sản phẩm</h1>\n");
-      out.write("        <button id=\"addsp\">Add new product</button>\n");
+      out.write("        <button id=\"addsp\">Thêm sản phẩm mới</button>\n");
       out.write("\n");
       out.write("        <table>\n");
       out.write("            <tr>\n");
       out.write("                <th>Image</th>\n");
       out.write("                <th>ID</th>\n");
-      out.write("                <th>Description</th>\n");
+      out.write("                <th>Nổi bật</th>\n");
       out.write("                <th>Rank</th>\n");
       out.write("                <th>Ngọc</th>\n");
       out.write("                <th>Tướng</th>\n");
       out.write("                <th>Trang phục</th>\n");
-      out.write("                <th>Loại nick</th>\n");
-      out.write("                <th>Price</th>\n");
+      out.write("                <th>Trạng thái</th>\n");
+      out.write("                <th>Giá bán</th>\n");
       out.write("                <th>Action</th>\n");
       out.write("            </tr>\n");
       out.write("            ");
@@ -89,8 +89,8 @@ public final class QLSP_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("        <div id=\"overlay\">\n");
       out.write("            <div id=\"form-container\">\n");
-      out.write("                <h2>Add new product</h2>\n");
-      out.write("                <form action=\"\">\n");
+      out.write("                <h2>Thêm sản phẩm mới</h2>\n");
+      out.write("                <form action=\"addproduct\" method=\"post\">\n");
       out.write("                    <label for=\"image\">Image URL:</label>\n");
       out.write("                    <input type=\"text\" name=\"image\" required>\n");
       out.write("\n");
@@ -126,7 +126,7 @@ public final class QLSP_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("        <script src=\"js/qlsp.js\"></script>\n");
       out.write("    </body>\n");
-      out.write("</html>\n");
+      out.write("</html>");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;
@@ -157,7 +157,9 @@ public final class QLSP_jsp extends org.apache.jasper.runtime.HttpJspBase
         do {
           out.write("\n");
           out.write("                <tr>\n");
-          out.write("                    <td><img style=\"height: 100px\" src=\"https://lienquan24h.com/upload/product/4aa2e4a1bdca94737c3c20ac41f4c604.gif\" alt=\"\"></td>\n");
+          out.write("                    <td><img style=\"height: 100px\" src=\"");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${o.image}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("\" alt=\"\"></td>\n");
           out.write("                    <td>");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${o.id}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("</td>\n");
@@ -189,7 +191,7 @@ public final class QLSP_jsp extends org.apache.jasper.runtime.HttpJspBase
           out.write("\">\n");
           out.write("                            <button>Delete</button>\n");
           out.write("                        </a>\n");
-          out.write("                        \n");
+          out.write("\n");
           out.write("                    </td>\n");
           out.write("                </tr>\n");
           out.write("            ");

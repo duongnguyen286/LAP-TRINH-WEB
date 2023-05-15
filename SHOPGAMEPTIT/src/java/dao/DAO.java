@@ -96,6 +96,36 @@ public class DAO {
         System.out.println(query);
     }
 
+    public void editProduct(String image, String id, String descripsion, String rank, String ngoc, String tuong, String trang_phuc, String loai_nick, String price) {
+        String query = "UPDATE [dbo].[product_item]\n"
+                + "   SET [image] = ?\n"
+                + "      ,[descripsion] = ?\n"
+                + "      ,[rank] = ?\n"
+                + "      ,[ngoc] = ?\n"
+                + "      ,[tuong] = ?\n"
+                + "      ,[trang_phuc] = ?\n"
+                + "      ,[loai_nick] = ?\n"
+                + "      ,[price] = ?\n"
+                + " WHERE id = ?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, image);
+            ps.setString(2, descripsion);
+            ps.setString(3, rank);
+            ps.setString(4, ngoc);
+            ps.setString(5, tuong);
+            ps.setString(6, trang_phuc);
+            ps.setString(7, loai_nick);
+            ps.setString(8, price);
+            ps.setString(9, id);
+
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+        System.out.println(query);
+    }
+
     public void deleteProduct(String pid) {
         String query = "delete from product_item\n"
                 + "where id= ?";

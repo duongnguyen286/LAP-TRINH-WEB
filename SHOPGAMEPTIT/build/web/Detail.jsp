@@ -104,7 +104,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <th>Ngọc:</th>
+                    <th>Ngọc 90:</th>
                     <td>${detail.ngoc}</td>
                 </tr>
                 <tr>

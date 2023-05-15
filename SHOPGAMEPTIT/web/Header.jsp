@@ -12,7 +12,7 @@
         <li>
             <a href="#">TRANG CHỦ</a>
         </li>
-            <c:if test="${sessionScope.account == null}">
+        <c:if test="${sessionScope.account == null}">
             <li>
                 <a href="./Login.jsp">ĐĂNG NHẬP</a>
             </li>
@@ -21,8 +21,13 @@
             </li>
         </c:if> 
 
+        <c:if test="${sessionScope.account.isAdmin ==1}">
+            <li>
+                <a href="qlsp">ADMIN</a>
+            </li>
+        </c:if> 
         <c:if test="${sessionScope.account != null}">
-            
+
             <li>
                 <a href="#">NẠP TIỀN</a>
             </li>
