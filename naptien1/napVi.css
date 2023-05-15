@@ -1,4 +1,7 @@
-
+body {
+    display: flex;
+    margin: 0px auto;
+}
 .modal-dialog {
     margin: 0px auto;
     align-content: center;
@@ -73,4 +76,3 @@ ul {
     background-color: #cfdae4;
     text-align: center; 
 }
-
