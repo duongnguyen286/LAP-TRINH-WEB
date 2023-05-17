@@ -6,6 +6,7 @@
 package control;
 
 import dao.DAO;
+import entity.Image;
 import entity.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -37,8 +38,9 @@ public class DetailControl extends HttpServlet {
         String id = request.getParameter("pid");
         DAO dao = new DAO();
         Product p = dao.getProductbyID(id);
-        
         request.setAttribute("detail", p);
+        Image i = dao.getImagebyID(id);
+        request.setAttribute("img", i);
         request.getRequestDispatcher("Detail.jsp").forward(request, response);
     }
 

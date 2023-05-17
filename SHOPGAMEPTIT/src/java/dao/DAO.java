@@ -6,7 +6,9 @@
 package dao;
 
 import context.DBContext;
+import control.EditAccountControl;
 import entity.Account;
+import entity.Image;
 import entity.Product;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -49,6 +51,25 @@ public class DAO {
         return list;
     }
 
+    public List<Account> getAllAccount() {
+        List<Account> list = new ArrayList<>();
+        String query = "select * from account";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Account(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getInt(4),
+                        rs.getString(5)));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
     public Product getProductbyID(String id) {
         String query = "select * from product_item\n"
                 + "where id = ?";
@@ -72,6 +93,52 @@ public class DAO {
         } catch (Exception e) {
         }
 
+        return null;
+    }
+
+    public Image getImagebyID(String id) {
+        String query = "select image.* from image,product_item\n"
+                + "where image.id=product_item.id\n"
+                + "And product_item.id=?";
+        try {
+            conn = new DBContext().getConnection();//mo ket noi voi sql
+            ps = conn.prepareStatement(query);
+            ps.setString(1, id);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return new Image(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getString(7),
+                        rs.getString(8));
+            }
+        } catch (Exception e) {
+        }
+
+        return null;
+    }
+
+    public Account getAccountbyUID(String uid) {
+        String query = "select * from account where uID = ?";
+        try {
+            conn = new DBContext().getConnection();//mo ket noi voi sql
+            ps = conn.prepareStatement(query);
+            ps.setString(1, uid);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return new Account(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getInt(4),
+                        rs.getString(5)
+                );
+            }
+        } catch (Exception e) {
+        }
         return null;
     }
 
@@ -126,6 +193,27 @@ public class DAO {
         System.out.println(query);
     }
 
+    public void editAccount(String uID, String username, String pass, String email, String isAdmin) {
+        String query = "UPDATE [dbo].[account]\n"
+                + "   SET [username] = ?\n"
+                + "      ,[pass] = ?\n"
+                + "      ,[isAdmin] = ?\n"
+                + "      ,[email] = ?\n"
+                + " WHERE uID = ?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, username);
+            ps.setString(2, pass);
+            ps.setString(3, isAdmin);
+            ps.setString(4, email);
+            ps.setString(5, uID);
+
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
     public void deleteProduct(String pid) {
         String query = "delete from product_item\n"
                 + "where id= ?";
@@ -133,6 +221,17 @@ public class DAO {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
             ps.setString(1, pid);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
+    public void deleteAccount(String uid) {
+        String query = "delete from account where uid = ?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, uid);
             ps.executeUpdate();
         } catch (Exception e) {
         }
@@ -197,7 +296,7 @@ public class DAO {
     }
 
     public static void main(String[] args) {
-        DAO dao = new DAO();
+  DAO dao = new DAO();
         List<Product> list = dao.getAlProduct();
 
         for (Product o : list) {
@@ -210,6 +309,7 @@ public class DAO {
         System.out.println(z);
 //        dao.addProduct("test", "test", "test", "test", "test", "test", "test", "test", "test");
 //        dao.deleteProduct("1");
+        dao.editProduct("https://images.pexels.com/photos/1738675/pexels-photo-1738675.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", "1", "BBB", "199", "199", "199", "199", "199", "1232443");
     }
 
     public Product getProductbyID() {

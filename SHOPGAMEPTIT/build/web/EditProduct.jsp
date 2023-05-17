@@ -81,7 +81,7 @@
             <table>
                 <tr>
                     <th>ID</th>
-                    <th><input style="background-color: #ccc; border: none" value="${detail.id}" type="text" name="id" readonly disabled required ></th>
+                    <th><input style="background-color: #ccc; border: none" value="${detail.id}" type="text" name="id" readonly required ></th>
                 </tr>
                 <tr>
                     <th>Image</th>
@@ -90,7 +90,7 @@
                 
                 <tr>
                     <th>Nổi bật</th>
-                    <th><input value="${detail.descripsion}" type="text" name="description" required></input></th>
+                    <th><input value="${detail.descripsion}" type="text" name="descripsion" required></input></th>
                 </tr>
                 <tr>
                     <th>Rank</th>

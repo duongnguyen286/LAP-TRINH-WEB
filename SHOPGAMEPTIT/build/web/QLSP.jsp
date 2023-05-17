@@ -11,23 +11,38 @@
     <head>
         <title>Quản lí sản phẩm</title>
         <link rel="stylesheet" type="text/css" href="assets/css/qlsp.css">
+        <style>
+        </style>
     </head>
     <body>
-        <h1>Quản lí sản phẩm</h1>
+        <div class="row">
+            <a class="col-2" href="qlsp">
+                <div style="background-color: #4CAF50" >
+                    QUẢN LÍ SẢN PHẨM
+                </div>
+            </a>
+            <a class="col-2" href="qlaccount">
+                <div style="background-color: #f2f2f2" >
+                    QUẢN LÍ TÀI KHOẢN
+                </div>
+            </a>
+        </div>
+
+
         <a href="home"><button>HOME</button></a>
-        <button id="addsp">Thêm sản phẩm mới</button>
+        <button id="addsp">THÊM SẢN PHẨM MỚI</button>
         <table>
             <tr>
-                <th>Image</th>
+                <th>IMAGE</th>
                 <th>ID</th>
-                <th>Nổi bật</th>
-                <th>Rank</th>
-                <th>Ngọc 90</th>
-                <th>Tướng</th>
-                <th>Trang phục</th>
-                <th>Trạng thái</th>
-                <th>Giá bán</th>
-                <th>Action</th>
+                <th>NỔI BẬT</th>
+                <th>RANK</th>
+                <th>NGỌC 90</th>
+                <th>TƯỚNG</th>
+                <th>TRANG PHỤC</th>
+                <th>TRẠNG THÁI</th>
+                <th>GIÁ BÁN</th>
+                <th>ACTION</th>
             </tr>
             <c:forEach items="${ListP}" var="o">
                 <tr>
@@ -52,7 +67,6 @@
                 </tr>
             </c:forEach>
 
-            <!-- Add more rows here -->
         </table>
 
 

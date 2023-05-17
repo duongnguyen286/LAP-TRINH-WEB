@@ -125,9 +125,13 @@
                 </tr>
             </table>
             <button>MUA</button>
-            <img src="https://via.placeholder.com/600x400.png" alt="Ảnh sản phẩm">
-            <img src="https://via.placeholder.com/600x400.png" alt="Ảnh sản phẩm">
-            <img src="https://via.placeholder.com/600x400.png" alt="Ảnh sản phẩm">
+            <img src="${img.a1}" alt="Ảnh sản phẩm">
+            <img src="${img.a2}" alt="Ảnh sản phẩm">
+            <img src="${img.a3}" alt="Ảnh sản phẩm">
+            <img src="${img.a4}" alt="Ảnh sản phẩm">
+            <img src="${img.a5}" alt="Ảnh sản phẩm">
+            <img src="${img.a6}" alt="Ảnh sản phẩm">
+            <img src="${img.a7}" alt="Ảnh sản phẩm">
 
         </div>
 

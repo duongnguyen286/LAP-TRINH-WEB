@@ -6,6 +6,8 @@
 package control;
 
 import dao.DAO;
+import entity.Account;
+import entity.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -18,8 +20,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Duong Nguyen
  */
-@WebServlet(name = "EditProductControl", urlPatterns = {"/editproduct"})
-public class EditProductControl extends HttpServlet {
+@WebServlet(name = "LoadAccountControl", urlPatterns = {"/loadaccount"})
+public class LoadAccountControl extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,20 +35,12 @@ public class EditProductControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        request.setCharacterEncoding("UTF-8");
-        String image = request.getParameter("image");
-        String id = request.getParameter("id");
-        String description = request.getParameter("descripsion");
-        String rank = request.getParameter("rank");
-        String ngoc = request.getParameter("ngoc");
-        String tuong = request.getParameter("tuong");
-        String trang_phuc = request.getParameter("trang_phuc");
-        String loai_nick = request.getParameter("loai_nick");
-        String price = request.getParameter("price");
-        
+        String uID = request.getParameter("uID");
         DAO dao = new DAO();
-        dao.editProduct(image, id, description, rank, ngoc, tuong, trang_phuc, loai_nick, price);
-        response.sendRedirect("qlsp");
+        Account a = dao.getAccountbyUID(uID);
+        
+        request.setAttribute("account", a);
+        request.getRequestDispatcher("EditAccount.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

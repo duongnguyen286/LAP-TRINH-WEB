@@ -3,17 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/SHOPGAMEPTIT/web/Login.jsp</file>
-            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/SHOPGAMEPTIT/web/js/qlsp.js</file>
-            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/SHOPGAMEPTIT/web/EditProduct.jsp</file>
-            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/SHOPGAMEPTIT/web/Home.jsp</file>
             <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/SHOPGAMEPTIT/web/QLSP.jsp</file>
-            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/SHOPGAMEPTIT/src/java/control/QLSPControl.java</file>
-            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/SHOPGAMEPTIT/src/java/control/LoginControl.java</file>
-            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/SHOPGAMEPTIT/src/java/control/DeleteProductControl.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/SHOPGAMEPTIT/web/QLAccount.jsp</file>
             <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/SHOPGAMEPTIT/web/assets/css/qlsp.css</file>
-            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/SHOPGAMEPTIT/web/assets/css/style.css</file>
-            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/SHOPGAMEPTIT/src/java/control/RegisterControl.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/SHOPGAMEPTIT/web/EditAccount.jsp</file>
         </group>
     </open-files>
 </project-private>
