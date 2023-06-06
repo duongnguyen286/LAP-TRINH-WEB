@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import sun.security.provider.MD5;
+import util.MaHoa;
 
 /**
  *
@@ -36,7 +38,7 @@ public class RegisterControl extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String username = request.getParameter("username");
-        String pass = request.getParameter("pass");
+        String pass = MaHoa.md5(request.getParameter("pass"));
         String emmai = request.getParameter("email");
 
         DAO dao = new DAO();

@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import util.MaHoa;
 
 /**
  *
@@ -37,7 +38,7 @@ public class LoginControl extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         String username = request.getParameter("user");
-        String pass = request.getParameter("pass");
+        String pass = MaHoa.md5(request.getParameter("pass"));
         DAO dao = new DAO();
         Account a = dao.checkLogin(username, pass);
 
