@@ -3,13 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/SHOPGAMEPTIT/web/Footer.jsp</file>
-            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/SHOPGAMEPTIT/web/Header.jsp</file>
-            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/SHOPGAMEPTIT/web/EditProduct.jsp</file>
-            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/SHOPGAMEPTIT/web/Home.jsp</file>
-            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/SHOPGAMEPTIT/web/Detail.jsp</file>
-            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/SHOPGAMEPTIT/web/QLAccount.jsp</file>
-            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/SHOPGAMEPTIT/web/EditAccount.jsp</file>
+            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/SHOPGAMEPTIT/src/java/com/vnpay/common/vnpayQuery.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/SHOPGAMEPTIT/src/java/com/vnpay/common/ajaxServlet.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/SHOPGAMEPTIT/src/java/com/vnpay/common/Config.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/SHOPGAMEPTIT/web/vnpay_refund.jsp</file>
+            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/SHOPGAMEPTIT/src/java/control/BuyControl.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/SHOPGAMEPTIT/web/vnpay_querydr.jsp</file>
+            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/SHOPGAMEPTIT/src/java/control/DetailControl.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/SHOPGAMEPTIT/web/vnpay_pay.jsp</file>
+            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/SHOPGAMEPTIT/web/vnpay_ipn.jsp</file>
+            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/SHOPGAMEPTIT/web/vnpay_return.jsp</file>
+            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/SHOPGAMEPTIT/src/java/com/vnpay/common/vnpayRefund.java</file>
         </group>
     </open-files>
 </project-private>
