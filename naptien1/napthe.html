@@ -139,31 +139,7 @@
             </div>
         </div>
     </div>
-    <script>
-        GetAmount();
-        $("#type").on('change', function () {
-
-            GetAmount();
-
-        });
-        function GetAmount() {
-
-            var telecom_key = $("#type").val();
-
-
-            var getamount = $.get("/nap-the/get-auto-amount?telecom_key=" + telecom_key, function (data, status) {
-
-                $("#amount").find('option').remove();
-                $("#amount").html(data).val($("#amount option:first").val());;
-
-            }).done(function () {
-
-            }).fail(function () {
-
-                alert("Không tìm thấy mệnh giá phù hợp");
-            })
-        }
-    </script>
+    
 </body>
 
 </html>
