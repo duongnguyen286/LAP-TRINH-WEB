@@ -42,6 +42,8 @@
                 <th>TRANG PHỤC</th>
                 <th>TRẠNG THÁI</th>
                 <th>GIÁ BÁN</th>
+                <th>TÀI KHOẢN NICK</th>
+                <th>MẬT KHẨU NICK</th>
                 <th>ACTION</th>
             </tr>
             <c:forEach items="${ListP}" var="o">
@@ -55,6 +57,8 @@
                     <td>${o.trang_phuc}</td>
                     <td>${o.loai_nick}</td>
                     <td>${o.price}</td>
+                    <td>${o.taikhoan}</td>
+                    <td>${o.matkhau}</td>
                     <td>
                         <a href="loadproduct?pid=${o.id}">
                             <button>Edit</button>
@@ -100,6 +104,12 @@
 
                     <label for="price">Price:</label>
                     <input type="text" name="price" required>
+                    
+                    <label for="taikhoan">Tài khoản nick:</label>
+                    <input type="text" name="taikhoan" required>
+
+                    <label for="matkhau">Mật khẩu nick:</label>
+                    <input type="text" name="matkhau" required>
 
                     <button type="submit">Add</button>
                     <button type="button" onclick="closeForm()">Cancel</button>

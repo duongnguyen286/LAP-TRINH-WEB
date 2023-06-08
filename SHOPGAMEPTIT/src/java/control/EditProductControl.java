@@ -43,9 +43,11 @@ public class EditProductControl extends HttpServlet {
         String trang_phuc = request.getParameter("trang_phuc");
         String loai_nick = request.getParameter("loai_nick");
         String price = request.getParameter("price");
-        
+        String taikhoan = request.getParameter("taikhoan");
+        String matkhau = request.getParameter("matkhau");
+
         DAO dao = new DAO();
-        dao.editProduct(image, id, description, rank, ngoc, tuong, trang_phuc, loai_nick, price);
+        dao.editProduct(image, id, description, rank, ngoc, tuong, trang_phuc, loai_nick, price,taikhoan,matkhau);
         response.sendRedirect("qlsp");
     }
 

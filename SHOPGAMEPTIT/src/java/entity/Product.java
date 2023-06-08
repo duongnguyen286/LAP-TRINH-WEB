@@ -7,23 +7,26 @@ package entity;
 
 /**
  *
- * @author LENOVO
+ * @author Duong Nguyen
  */
 public class Product {
+
     private String image;
-    private  int id;
+    private int id;
     private String descripsion;
     private String rank;
     private String ngoc;
     private String tuong;
     private String trang_phuc;
     private String loai_nick;
-    private int  price; 
+    private int price;
+    private String taikhoan;
+    private String matkhau;
 
     public Product() {
     }
 
-    public Product(String image, int id, String descripsion, String rank, String ngoc, String tuong, String trang_phuc, String loai_nick, int price) {
+    public Product(String image, int id, String descripsion, String rank, String ngoc, String tuong, String trang_phuc, String loai_nick, int price, String taikhoan, String matkhau) {
         this.image = image;
         this.id = id;
         this.descripsion = descripsion;
@@ -33,10 +36,8 @@ public class Product {
         this.trang_phuc = trang_phuc;
         this.loai_nick = loai_nick;
         this.price = price;
-    }
-
-    public Product(int aInt, String string, String string0, double aDouble, String string1, String string2, int aInt0, int aInt1, int aInt2, String string3) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.taikhoan = taikhoan;
+        this.matkhau = matkhau;
     }
 
     public String getImage() {
@@ -111,10 +112,25 @@ public class Product {
         this.price = price;
     }
 
+    public String getTaikhoan() {
+        return taikhoan;
+    }
+
+    public void setTaikhoan(String taikhoan) {
+        this.taikhoan = taikhoan;
+    }
+
+    public String getMatkhau() {
+        return matkhau;
+    }
+
+    public void setMatkhau(String matkhau) {
+        this.matkhau = matkhau;
+    }
+
     @Override
     public String toString() {
-        return "Product{" + "image=" + image + ", id=" + id + ", descripsion=" + descripsion + ", rank=" + rank + ", ngoc=" + ngoc + ", tuong=" + tuong + ", trang_phuc=" + trang_phuc + ", loai_nick=" + loai_nick + ", price=" + price + '}';
+        return "Product{" + "image=" + image + ", id=" + id + ", descripsion=" + descripsion + ", rank=" + rank + ", ngoc=" + ngoc + ", tuong=" + tuong + ", trang_phuc=" + trang_phuc + ", loai_nick=" + loai_nick + ", price=" + price + ", taikhoan=" + taikhoan + ", matkhau=" + matkhau + '}';
     }
-    
-    
+
 }

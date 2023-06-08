@@ -42,7 +42,9 @@ public class DAO {
                         rs.getString(6),
                         rs.getString(7),
                         rs.getString(8),
-                        rs.getInt(9)
+                        rs.getInt(9),
+                        rs.getString(10),
+                        rs.getString(11)
                 ));
             }
         } catch (Exception e) {
@@ -88,7 +90,11 @@ public class DAO {
                         rs.getString(6),
                         rs.getString(7),
                         rs.getString(8),
-                        rs.getInt(9));
+                        rs.getInt(9),
+                        rs.getString(10),
+                        rs.getString(11))
+            
+         2;
             }
         } catch (Exception e) {
         }
@@ -142,9 +148,9 @@ public class DAO {
         return null;
     }
 
-    public void addProduct(String image, String id, String descripsion, String rank, String ngoc, String tuong, String trang_phuc, String loai_nick, String price) {
-        String query = "insert into product_item (image,id,descripsion,rank,ngoc,tuong,trang_phuc,loai_nick,price)\n"
-                + "values (?,?,?,?,?,?,?,?,?)";
+    public void addProduct(String image, String id, String descripsion, String rank, String ngoc, String tuong, String trang_phuc, String loai_nick, String price, String taikhoan, String matkhau) {
+        String query = "insert into product_item (image,id,descripsion,rank,ngoc,tuong,trang_phuc,loai_nick,price,taikhoan,matkhau)\n"
+                + "values (?,?,?,?,?,?,?,?,?,?,?)";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
@@ -157,13 +163,15 @@ public class DAO {
             ps.setString(7, trang_phuc);
             ps.setString(8, loai_nick);
             ps.setString(9, price);
+            ps.setString(10, taikhoan);
+            ps.setString(11, matkhau);
             ps.executeUpdate();
         } catch (Exception e) {
         }
         System.out.println(query);
     }
 
-    public void editProduct(String image, String id, String descripsion, String rank, String ngoc, String tuong, String trang_phuc, String loai_nick, String price) {
+    public void editProduct(String image, String id, String descripsion, String rank, String ngoc, String tuong, String trang_phuc, String loai_nick, String price, String taikhoan, String matkhau) {
         String query = "UPDATE [dbo].[product_item]\n"
                 + "   SET [image] = ?\n"
                 + "      ,[descripsion] = ?\n"
@@ -173,6 +181,8 @@ public class DAO {
                 + "      ,[trang_phuc] = ?\n"
                 + "      ,[loai_nick] = ?\n"
                 + "      ,[price] = ?\n"
+                + "      ,[taikhoan] = ?\n"
+                + "      ,[matkhau] = ?\n"
                 + " WHERE id = ?";
         try {
             conn = new DBContext().getConnection();
@@ -185,7 +195,9 @@ public class DAO {
             ps.setString(6, trang_phuc);
             ps.setString(7, loai_nick);
             ps.setString(8, price);
-            ps.setString(9, id);
+            ps.setString(9, taikhoan);
+            ps.setString(10, matkhau);
+            ps.setString(11, id);
 
             ps.executeUpdate();
         } catch (Exception e) {
@@ -296,7 +308,7 @@ public class DAO {
     }
 
     public static void main(String[] args) {
-  DAO dao = new DAO();
+        DAO dao = new DAO();
         List<Product> list = dao.getAlProduct();
 
         for (Product o : list) {
@@ -309,7 +321,6 @@ public class DAO {
         System.out.println(z);
 //        dao.addProduct("test", "test", "test", "test", "test", "test", "test", "test", "test");
 //        dao.deleteProduct("1");
-        dao.editProduct("https://images.pexels.com/photos/1738675/pexels-photo-1738675.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", "1", "BBB", "199", "199", "199", "199", "199", "1232443");
     }
 
     public Product getProductbyID() {

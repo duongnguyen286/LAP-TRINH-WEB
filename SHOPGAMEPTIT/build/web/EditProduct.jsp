@@ -116,6 +116,14 @@
                     <th>Giá bán</th>
                     <th><input value="${detail.price}" type="text" name="price" required></th>
                 </tr>
+                <tr>
+                    <th>Tài khoản</th>
+                    <th><input value="${detail.taikhoan}" type="text" name="taikhoan" required></th>
+                </tr>
+                <tr>
+                    <th>Mật khẩu</th>
+                    <th><input value="${detail.matkhau}" type="text" name="matkhau" required></th>
+                </tr>
             </table>
 
             <button type='submit'>SAVE</button>
