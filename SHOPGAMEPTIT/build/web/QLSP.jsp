@@ -12,6 +12,32 @@
         <title>Quản lí sản phẩm</title>
         <link rel="stylesheet" type="text/css" href="assets/css/qlsp.css">
         <style>
+            .center {
+                text-align: center;
+                margin-top:10px
+            }
+
+            .pagination {
+                display: inline-block;
+            }
+
+            .pagination a {
+                color: black;
+                float: left;
+                padding: 8px 16px;
+                text-decoration: none;
+                transition: background-color .3s;
+                border: 1px solid #ddd;
+                margin: 0 4px;
+            }
+
+            .pagination a.active {
+                background-color: #4CAF50;
+                color: white;
+                border: 1px solid #4CAF50;
+            }
+
+            .pagination a:hover:not(.active) {background-color: #ddd;}
         </style>
     </head>
     <body>
@@ -31,6 +57,12 @@
 
         <a href="home"><button>HOME</button></a>
         <button id="addsp">THÊM SẢN PHẨM MỚI</button>
+
+        <form action="searchqlsp?indexp=1" method="post" class="search-form">
+            <input type="text" id="keyword" name="txt" placeholder="Nhập từ khóa...">
+            <button type="submit">Tìm kiếm</button>
+        </form>
+
         <table>
             <tr>
                 <th>IMAGE</th>
@@ -73,6 +105,13 @@
 
         </table>
 
+        <div class="center">
+            <div class="pagination">
+                <c:forEach begin="1" end="${endP}" var="i">
+                    <a class="${cnt==i?"active":""}" href="qlsp?index=${i}">${i}</a>
+                </c:forEach>
+            </div>
+        </div>
 
         <div id="overlay">
             <div id="form-container">
@@ -104,7 +143,7 @@
 
                     <label for="price">Price:</label>
                     <input type="text" name="price" required>
-                    
+
                     <label for="taikhoan">Tài khoản nick:</label>
                     <input type="text" name="taikhoan" required>
 

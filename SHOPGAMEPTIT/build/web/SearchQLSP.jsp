@@ -54,15 +54,15 @@
             </a>
         </div>
 
+        <div class="abc">
+            <a href="home"><button>HOME</button></a>
+            <button id="addsp">THÊM SẢN PHẨM MỚI</button>
 
-        <a href="home"><button>HOME</button></a>
-        <button id="addsp">THÊM SẢN PHẨM MỚI</button>
-
-        <form action="searchqlsp?indexp=1" method="post" class="search-form">
-            <input type="text" id="keyword" name="txt" placeholder="Nhập từ khóa...">
-            <button type="submit">Tìm kiếm</button>
-        </form>
-
+            <form action="searchqlsp?indexp=1" method="post" class="search-form">
+                <input type="text" id="keyword" name="txt" placeholder="Nhập từ khóa...">
+                <button type="submit">Tìm kiếm</button>
+            </form>
+        </div>
         <table>
             <tr>
                 <th>IMAGE</th>
@@ -74,8 +74,6 @@
                 <th>TRANG PHỤC</th>
                 <th>TRẠNG THÁI</th>
                 <th>GIÁ BÁN</th>
-                <th>TÀI KHOẢN NICK</th>
-                <th>MẬT KHẨU NICK</th>
                 <th>ACTION</th>
             </tr>
             <c:forEach items="${ListP}" var="o">
@@ -89,8 +87,6 @@
                     <td>${o.trang_phuc}</td>
                     <td>${o.loai_nick}</td>
                     <td>${o.price}</td>
-                    <td>${o.taikhoan}</td>
-                    <td>${o.matkhau}</td>
                     <td>
                         <a href="loadproduct?pid=${o.id}">
                             <button>Edit</button>
@@ -107,8 +103,8 @@
 
         <div class="center">
             <div class="pagination">
-                <c:forEach begin="1" end="${endP}" var="i">
-                    <a class="${cnt==i?"active":""}" href="qlsp?index=${i}">${i}</a>
+                <c:forEach begin="1" end="${endPage}" var="i">
+                    <a class="${cnt==i?"active":""}" href="searchqlsp?indexp=${i}&txt=${txt}">${i}</a>
                 </c:forEach>
             </div>
         </div>
@@ -143,12 +139,6 @@
 
                     <label for="price">Price:</label>
                     <input type="text" name="price" required>
-
-                    <label for="taikhoan">Tài khoản nick:</label>
-                    <input type="text" name="taikhoan" required>
-
-                    <label for="matkhau">Mật khẩu nick:</label>
-                    <input type="text" name="matkhau" required>
 
                     <button type="submit">Add</button>
                     <button type="button" onclick="closeForm()">Cancel</button>

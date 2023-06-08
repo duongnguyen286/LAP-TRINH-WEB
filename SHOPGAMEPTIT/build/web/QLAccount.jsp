@@ -12,6 +12,39 @@
         <title>Quản lí tài khoản</title>
         <link rel="stylesheet" type="text/css" href="assets/css/qlsp.css">
         <style>
+            .center {
+                text-align: center;
+                margin-top:10px
+            }
+
+            .pagination {
+                display: inline-block;
+            }
+
+            .pagination a {
+                color: black;
+                float: left;
+                padding: 8px 16px;
+                text-decoration: none;
+                transition: background-color .3s;
+                border: 1px solid #ddd;
+                margin: 0 4px;
+            }
+
+            .pagination a.active {
+                background-color: #4CAF50;
+                color: white;
+                border: 1px solid #4CAF50;
+            }
+
+            .pagination a:hover:not(.active) {
+                background-color: #ddd;
+            }
+            .search-form {
+               
+                margin-left: 965px;
+                
+            }
         </style>
     </head>
     <body>
@@ -28,6 +61,10 @@
             </a>
         </div>
         <a href="home"><button>HOME</button></a>
+        <form action="searchqlaccount?indexa=1" method="post" class="search-form">
+            <input type="text" id="keyword" name="txt" placeholder="Nhập từ khóa...">
+            <button type="submit">Tìm kiếm</button>
+        </form>
         <table>
             <tr>
                 <th>UID</th>
@@ -57,5 +94,12 @@
 
         </table>
 
+        <div class="center">
+            <div class="pagination">
+                <c:forEach begin="1" end="${endP}" var="i">
+                    <a class="${cnt==i?"active":""}" href="qlaccount?index=${i}">${i}</a>
+                </c:forEach>
+            </div>
+        </div>
     </body>
 </html>

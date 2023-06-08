@@ -42,13 +42,15 @@
     <body>
         <div class="wrapper">
             <jsp:include page="Header.jsp"></jsp:include>
+
                 <div class="main-content">
                     <form action="search?indexs=1" method="post" class="search-form">
                         <div class="a">
+                            
                             <label for="keyword">Tìm kiếm</label>
-                            <input type="text" id="keyword" name="txt" placeholder="Nhập từ khóa...">
+                            <input type="text" id="keyword" name="txt" value="${txt}" placeholder="Nhập từ khóa...">
                             <label for="maso">Mã Số</label>
-                            <input type="text" id="maso" name="maso" placeholder="Nhập id...">
+                            <input type="text" id="maso" name="maso" value="${maso}" placeholder="Nhập id..." >
                             <label for="giatien">Giá tiền</label>
                             <select id="giatien" name="giatien">
                                 <option value="#">Chọn giá tiền</option>
@@ -61,6 +63,7 @@
                             </select>
                         </div>
                         <div class="b">
+                            <input type="hidden" id="keyword" name="ngoc" value="${ngoc}" placeholder="Nhập từ khóa...">
                             <label for="ngoc">Ngọc 90</label>
                             <select id="ngoc" name="ngoc">
                                 <option value="#">-- Không chọn --</option>
@@ -68,6 +71,7 @@
                                 <option value="khong">Không</option>
                             </select>
                             <label for="trangthai"> Trạng thái</label>
+                            <input type="hidden" id="keyword" name="tt" value="${tt}" placeholder="Nhập từ khóa...">
                             <select id="trangthai" name="trangthai">
                                 <option value="#">-- Không chọn --</option>
                                 <option value="nicktrangthongtin">Nick trắng thông tin</option>
@@ -78,7 +82,7 @@
                         </div>
                     </form>
                     <div class="product_list">
-                    <c:forEach items="${ListP}" var="o">
+                    <c:forEach items="${List}" var="o">
                         <div class="product_item">
                             <div class="image">
                                 <a href="detail?pid=${o.id}">
@@ -118,14 +122,14 @@
                     </c:forEach>
 
 
-
                 </div>
-            </div>
 
+
+            </div>
             <div class="center">
                 <div class="pagination">
-                    <c:forEach begin="1" end="${endP}" var="i">
-                        <a class="${cnt==i?"active":""}" href="home?index=${i}">${i}</a>
+                    <c:forEach begin="1" end="${endPage}" var="i">
+                        <a class="${cnt==i?"active":""}" href="searchpr?indexs=${i}&giatien=${giatien}">${i}</a>
                     </c:forEach>
                 </div>
             </div>

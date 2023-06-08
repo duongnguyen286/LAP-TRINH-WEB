@@ -46,6 +46,9 @@ public class BuyControl extends HttpServlet {
             DAO dao = new DAO();
             Product p = dao.getProductbyID(id);
             request.setAttribute("detail", p);
+            
+            session.setAttribute("nick", p);
+            
             request.getRequestDispatcher("vnpay_pay.jsp").forward(request, response);
         }
     }

@@ -5,9 +5,10 @@
  */
 package control;
 
-import dao.DAO;
-import entity.Account;
+import dao.SEARCH;
+import entity.Product;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,10 +18,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Duong Nguyen
+ * @author VXH
  */
-@WebServlet(name = "QLAccountControl", urlPatterns = {"/qlaccount"})
-public class QLAccountControl extends HttpServlet {
+@WebServlet(name = "SearchNgocControl", urlPatterns = {"/searchng"})
+public class SearchNgocControl extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,26 +35,39 @@ public class QLAccountControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        DAO dao = new DAO();
+         String ngoc = request.getParameter("ngoc");
+        SEARCH search = new SEARCH();
+        if (ngoc.equals("co")) {
+                String indexP = request.getParameter("indexs");
+                int index = Integer.parseInt(indexP);
+                List<Product> list = search.searchProductNgoc("CÓ", index, 8);
+                request.setAttribute("List", list);
+                int count = search.countSearchNgoc("CÓ");
+                int endPage = count / 8;
+                if (count % 8 != 0) {
+                    endPage++;
+                }
+                request.setAttribute("endPage", endPage);
+                request.setAttribute("cnt", index);
+                request.setAttribute("ngoc", ngoc);
 
-//        List<Account> list = dao.getAllAccount();
-//        request.setAttribute("ListA", list);
-        String indexA = request.getParameter("index");
-        if (indexA == null) {
-            indexA = "1";
-        }
-        int index = Integer.parseInt(indexA);
-//        List<Product> list = dao.getAlProduct();
-        List<Account> list = dao.pageAccount(index, 6);
-        request.setAttribute("ListA", list);
-        int count = dao.getTotalAccount();
-        int endPage = count / 6;
-        if (count % 6 != 0) {
-            endPage++;
-        }
-        request.setAttribute("endP", endPage);
-        request.setAttribute("cnt", index);
-        request.getRequestDispatcher("QLAccount.jsp").forward(request, response);
+                request.getRequestDispatcher("SearchNgoc.jsp").forward(request, response);
+            } else {
+                String indexP = request.getParameter("indexs");
+                int index = Integer.parseInt(indexP);
+                List<Product> list = search.searchProductNgoc("KHÔNG", index, 8);
+                request.setAttribute("List", list);
+                int count = search.countSearchNgoc("KHÔNG");
+                int endPage = count / 8;
+                if (count % 8 != 0) {
+                    endPage++;
+                }
+                request.setAttribute("endPage", endPage);
+                request.setAttribute("cnt", index);
+                request.setAttribute("ngoc", ngoc);
+
+                request.getRequestDispatcher("SearchNgoc.jsp").forward(request, response);
+            }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

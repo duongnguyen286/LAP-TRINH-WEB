@@ -42,13 +42,14 @@
     <body>
         <div class="wrapper">
             <jsp:include page="Header.jsp"></jsp:include>
+
                 <div class="main-content">
                     <form action="search?indexs=1" method="post" class="search-form">
                         <div class="a">
                             <label for="keyword">Tìm kiếm</label>
                             <input type="text" id="keyword" name="txt" placeholder="Nhập từ khóa...">
                             <label for="maso">Mã Số</label>
-                            <input type="text" id="maso" name="maso" placeholder="Nhập id...">
+                            <input type="text" id="maso" name="maso" placeholder="Nhập id..." >
                             <label for="giatien">Giá tiền</label>
                             <select id="giatien" name="giatien">
                                 <option value="#">Chọn giá tiền</option>
@@ -78,7 +79,7 @@
                         </div>
                     </form>
                     <div class="product_list">
-                    <c:forEach items="${ListP}" var="o">
+                    <c:forEach items="${List}" var="o">
                         <div class="product_item">
                             <div class="image">
                                 <a href="detail?pid=${o.id}">
@@ -118,14 +119,14 @@
                     </c:forEach>
 
 
-
                 </div>
-            </div>
 
+
+            </div>
             <div class="center">
                 <div class="pagination">
-                    <c:forEach begin="1" end="${endP}" var="i">
-                        <a class="${cnt==i?"active":""}" href="home?index=${i}">${i}</a>
+                    <c:forEach begin="1" end="${endPage}" var="i">
+                        <a class="${cnt==i?"active":""}" href="search?indexs=${i}&txt=${txt}">${i}</a>
                     </c:forEach>
                 </div>
             </div>

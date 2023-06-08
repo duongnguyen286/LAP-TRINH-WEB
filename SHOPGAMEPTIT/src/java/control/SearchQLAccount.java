@@ -5,9 +5,10 @@
  */
 package control;
 
-import dao.DAO;
+import dao.SEARCH;
 import entity.Account;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,10 +18,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Duong Nguyen
+ * @author VXH
  */
-@WebServlet(name = "QLAccountControl", urlPatterns = {"/qlaccount"})
-public class QLAccountControl extends HttpServlet {
+@WebServlet(name = "SearchQLAccount", urlPatterns = {"/searchqlaccount"})
+public class SearchQLAccount extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,26 +35,21 @@ public class QLAccountControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        DAO dao = new DAO();
-
-//        List<Account> list = dao.getAllAccount();
-//        request.setAttribute("ListA", list);
-        String indexA = request.getParameter("index");
-        if (indexA == null) {
-            indexA = "1";
-        }
-        int index = Integer.parseInt(indexA);
-//        List<Product> list = dao.getAlProduct();
-        List<Account> list = dao.pageAccount(index, 6);
+        String txt=request.getParameter("txt");
+        SEARCH search = new SEARCH();
+        String indexP = request.getParameter("indexa");
+        int index = Integer.parseInt(indexP);
+        List<Account> list = search.searchAccount(txt, index, 7);
         request.setAttribute("ListA", list);
-        int count = dao.getTotalAccount();
-        int endPage = count / 6;
-        if (count % 6 != 0) {
+        int count = search.countSearchAccount(txt);
+        int endPage = count / 7;
+        if (count % 7 != 0) {
             endPage++;
         }
-        request.setAttribute("endP", endPage);
+        request.setAttribute("endPage", endPage);
         request.setAttribute("cnt", index);
-        request.getRequestDispatcher("QLAccount.jsp").forward(request, response);
+        request.setAttribute("txt", txt);
+        request.getRequestDispatcher("SearchQLAccount.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

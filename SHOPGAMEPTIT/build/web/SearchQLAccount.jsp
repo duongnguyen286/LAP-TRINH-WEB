@@ -60,11 +60,14 @@
                 </div>
             </a>
         </div>
-        <a href="home"><button>HOME</button></a>
-        <form action="searchqlaccount?indexa=1" method="post" class="search-form">
-            <input type="text" id="keyword" name="txt" placeholder="Nhập từ khóa...">
-            <button type="submit">Tìm kiếm</button>
-        </form>
+        <div class="abc">
+            <a href="home"><button>HOME</button></a>
+
+            <form action="searchqlaccount?indexa=1" method="post" class="search-form">
+                <input type="text" id="keyword" name="txt" placeholder="Nhập từ khóa...">
+                <button type="submit">Tìm kiếm</button>
+            </form>
+        </div>
         <table>
             <tr>
                 <th>UID</th>
@@ -93,11 +96,10 @@
             </c:forEach>
 
         </table>
-
         <div class="center">
             <div class="pagination">
-                <c:forEach begin="1" end="${endP}" var="i">
-                    <a class="${cnt==i?"active":""}" href="qlaccount?index=${i}">${i}</a>
+                <c:forEach begin="1" end="${endPage}" var="i">
+                    <a class="${cnt==i?"active":""}" href="searchqlaccount?indexa=${i}&txt=${txt}">${i}</a>
                 </c:forEach>
             </div>
         </div>

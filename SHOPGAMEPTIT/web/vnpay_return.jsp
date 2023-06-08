@@ -53,7 +53,7 @@
         <!--Begin display -->
         <div class="container">
             <div class="header clearfix">
-                <h3 class="text-muted"><a href="home">SHOPGAMEPTIT</a></h3>
+                <h3 class="text-muted"><a href="home">SHOPGAMEPTIT ${sessionScope.nick.taikhoan} ${sessionScope.nick.matkhau}</a></h3>
             </div>
             <div class="table-responsive">
                 <div class="form-group">
@@ -90,7 +90,9 @@
                         <%
                             if (signValue.equals(vnp_SecureHash)) {
                                 if ("00".equals(request.getParameter("vnp_TransactionStatus"))) {
-                                    out.print("Success");
+                                    out.println("Success");
+                                    
+                                    out.println("\nBạn có thể xem lại thông tin nick đã mua tại lịch sử");
                                 } else {
                                     out.print("Failed");
                                 }

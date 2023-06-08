@@ -36,9 +36,21 @@ public class HomeControl extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         DAO dao = new DAO();
-        List<Product> list = dao.getAlProduct();
-        
+        String indexP=request.getParameter("index");
+        if(indexP==null){
+            indexP="1";
+        }
+        int index=Integer.parseInt(indexP);
+//        List<Product> list = dao.getAlProduct();
+        List<Product> list = dao.pageProduct(index,8);
         request.setAttribute("ListP", list);
+        int count = dao.getTotalProduct();
+        int endPage = count / 8;
+        if (count % 8 != 0) {
+            endPage++;
+        }
+        request.setAttribute("endP", endPage);
+        request.setAttribute("cnt", index);
         request.getRequestDispatcher("Home.jsp").forward(request, response);
     }
 

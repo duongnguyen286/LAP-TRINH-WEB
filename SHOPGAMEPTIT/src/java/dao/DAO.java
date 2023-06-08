@@ -92,9 +92,7 @@ public class DAO {
                         rs.getString(8),
                         rs.getInt(9),
                         rs.getString(10),
-                        rs.getString(11))
-            
-         2;
+                        rs.getString(11));
             }
         } catch (Exception e) {
         }
@@ -305,6 +303,129 @@ public class DAO {
         } catch (Exception e) {
         }
         return null;
+    }
+
+    public void resetPass(String email, String newpass) {
+//        String s = RandomStringUtils.randomAlphanumeric(11);
+
+        String query = "UPDATE account \n"
+                + "SET pass = ? \n"
+                + "WHERE email = ?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, newpass);
+            ps.setString(2, email);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
+    public int getTotalProduct() {
+        String query = "select count(*) from product_item";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+
+            }
+        } catch (Exception e) {
+        }
+        return 0;
+    }
+
+    public List<Product> pageProduct(int index, int cnt) {
+        List<Product> list = new ArrayList<>();
+        String query = "select * from product_item\n"
+                + "order by id\n"
+                + "offset ? row fetch next ? rows only;";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, (index - 1) * cnt);
+            ps.setInt(2, cnt);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Product(rs.getString(1),
+                        rs.getInt(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getString(7),
+                        rs.getString(8),
+                        rs.getInt(9),
+                        rs.getString(10),
+                        rs.getString(11)
+                ));
+            }
+        } catch (Exception e) {
+        }
+
+        return list;
+    }
+
+    public int getTotalAccount() {
+        String query = "select count(*) from account";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+
+            }
+        } catch (Exception e) {
+        }
+        return 0;
+    }
+
+    public List<Account> pageAccount(int index, int cnt) {
+        List<Account> list = new ArrayList<>();
+        String query = "select * from account\n"
+                + "order by uid\n"
+                + "offset ? row fetch next ? rows only;";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, (index - 1) * cnt);
+            ps.setInt(2, cnt);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Account(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getInt(4),
+                        rs.getString(5)));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
+    public int countSearch(String txt) {
+        String query = "select count(*) from product_item \n"
+                + "where id like ?\n"
+                + "or tuong like ?\n"
+                + "or [rank] like ?\n"
+                + "or descripsion like ?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, "%" + txt + "%");
+            ps.setString(2, "%" + txt + "%");
+            ps.setString(3, "%" + txt + "%");
+            ps.setString(4, "%" + txt + "%");
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+
+            }
+        } catch (Exception e) {
+        }
+        return 0;
     }
 
     public static void main(String[] args) {

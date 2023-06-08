@@ -35,9 +35,24 @@ public class QLSPControl extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         DAO dao = new DAO();
-        List<Product> list= dao.getAlProduct();
-        
+//        List<Product> list= dao.getAlProduct();
+//        
+//        request.setAttribute("ListP", list);
+        String indexP = request.getParameter("index");
+        if (indexP == null) {
+            indexP = "1";
+        }
+        int index = Integer.parseInt(indexP);
+//        List<Product> list = dao.getAlProduct();
+        List<Product> list = dao.pageProduct(index,3);
         request.setAttribute("ListP", list);
+        int count = dao.getTotalProduct();
+        int endPage = count / 3;
+        if (count % 3 != 0) {
+            endPage++;
+        }
+        request.setAttribute("endP", endPage);
+        request.setAttribute("cnt", index);
         request.getRequestDispatcher("QLSP.jsp").forward(request, response);
     }
 
