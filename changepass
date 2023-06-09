@@ -157,6 +157,9 @@ public class ChangeControl extends HttpServlet {
                 <li>
                     <a href="./login.html">ĐĂNG NHẬP</a>
                 </li>
+                <li> 
+                    <a href="./change.html"> ĐỔI MẬT KHẨU</a>
+                </li>
             </ul>
         </div>
 
