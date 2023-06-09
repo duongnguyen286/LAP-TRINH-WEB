@@ -25,7 +25,9 @@ body {
     
 }
 .modal-header {
-    padding: 20px 20px 15px 20px;
+
+    padding: 20px 10px 15px 20px;
+    height: 97px;
     border-bottom: 1px solid #eeeeee;
 
 }
@@ -41,7 +43,7 @@ body {
 .modal-title {
     text-align: right;
     font-weight: 500;
-    font-size: 18px;
+    font-size: 30px;
     color: #3f444a;
     margin: 0;
     line-height: 1.42857;
@@ -49,6 +51,7 @@ body {
 .modal-body{
     padding: 20px;
     position: relative;
+    height: 30px;;
 }
 .nav-justified{
     width: 100%;
