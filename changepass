@@ -1,0 +1,159 @@
+1. Prepare 
+packge dao
+// class DAO
+
+public void change(String user, String pass) {
+        String query="update admin set password=? where username=?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, user);
+            ps.setString(2, pass);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+  
+2. create ChangeControl.java in package controll
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package control;
+
+import dao.DAO;
+import entity.Account;
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import sun.security.util.Password;
+import util.MaHoa;
+
+/**
+ *
+ * @author Duong Nguyen
+ */
+@WebServlet(name = "ChangeControl", urlPatterns = {"/Change"})
+public class ChangeControl extends HttpServlet {
+
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    protected void toGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+
+        String username = request.getParameter("user");
+        String pass = MaHoa.md5(request.getParameter("pass"));
+        String newpass = MaHoa.md5(request.getParameter("newpass"));
+        DAO dao = new DAO();
+        Account a = dao.checkLogin(username, pass);
+
+        if (a == null) {
+            //khong ton tai
+            String mess ="Pass word is incorrect";
+            request.setAttribute("mess", "Tài khoản hoặc Mật khẩu không chính xác");
+            request.getRequestDispatcher("Change.jsp").forward(request, response);
+        } else {
+            //dung pass
+            Account a =new Account(username, pass, a.getRole());
+            dao.Change(a);
+            HttpSession session = request.getSession();
+            session.setAttribute("account", a);
+            session.setMaxInactiveInterval(3600);
+            response.sendRedirect("Home.jsp");
+        }
+    }
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
+
+}
+
+
+
+
+3. Change.jsp
+<%-- 
+    Document   : change
+    Created on : Jun 9, 2023, 3:39:47 AM
+    Author     : Admin
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lap Trinh Web</title>
+    
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+    <body>
+        <h1> Change password form </h1><!-- comment -->
+        <h3 style="color: red"> ${requestScope.ms} </h3>
+        <form action="change">
+            Old password:<input type="password" name="opass"/><br/><!-- comment -->
+            <input type="hidden" name="user" value="${sessionScope.account.username}"/>
+            New password:<input type="password" name="pass"/><br/><!-- comment -->
+            Confirm password:<input type="password" name="rpass"/><br/><!-- comment -->
+            <input type="submit" value="CHANGE"/>
+        </form>
+    </body>
+</html>
+
+
