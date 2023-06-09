@@ -41,9 +41,9 @@
                 background-color: #ddd;
             }
             .search-form {
-               
+
                 margin-left: 965px;
-                
+
             }
         </style>
     </head>
@@ -60,11 +60,13 @@
                 </div>
             </a>
         </div>
-        <a href="home"><button>HOME</button></a>
-        <form action="searchqlaccount?indexa=1" method="post" class="search-form">
-            <input type="text" id="keyword" name="txt" placeholder="Nhập từ khóa...">
-            <button type="submit">Tìm kiếm</button>
-        </form>
+        <div class="abc">
+            <a href="home"><button>HOME</button></a>
+            <form action="searchqlaccount?indexa=1" method="post" class="search-form">
+                <input type="text" id="keyword" name="txt" placeholder="Nhập từ khóa...">
+                <button type="submit">Tìm kiếm</button>
+            </form>
+        </div>
         <table>
             <tr>
                 <th>UID</th>

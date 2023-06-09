@@ -54,14 +54,15 @@
             </a>
         </div>
 
+        <div class="abc">
+            <a href="home"><button>HOME</button></a>
+            <button id="addsp">THÊM SẢN PHẨM MỚI</button>
 
-        <a href="home"><button>HOME</button></a>
-        <button id="addsp">THÊM SẢN PHẨM MỚI</button>
-
-        <form action="searchqlsp?indexp=1" method="post" class="search-form">
-            <input type="text" id="keyword" name="txt" placeholder="Nhập từ khóa...">
-            <button type="submit">Tìm kiếm</button>
-        </form>
+            <form action="searchqlsp?indexp=1" method="post" class="search-form">
+                <input type="text" id="keyword" name="txt" placeholder="Nhập từ khóa...">
+                <button type="submit">Tìm kiếm</button>
+            </form>
+        </div>
 
         <table>
             <tr>

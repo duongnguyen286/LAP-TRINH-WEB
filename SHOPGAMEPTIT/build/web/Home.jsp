@@ -47,7 +47,7 @@
                         <div class="a">
                             <label for="keyword">Tìm kiếm</label>
                             <input type="text" id="keyword" name="txt" placeholder="Nhập từ khóa...">
-                            <label for="maso">Mã Số</label>
+                            <label for="maso" style="padding-left: 24px">Mã Số</label>
                             <input type="text" id="maso" name="maso" placeholder="Nhập id...">
                             <label for="giatien">Giá tiền</label>
                             <select id="giatien" name="giatien">
@@ -61,7 +61,7 @@
                             </select>
                         </div>
                         <div class="b">
-                            <label for="ngoc">Ngọc 90</label>
+                            <label for="ngoc" style="padding-left: 8px">Ngọc 90</label>
                             <select id="ngoc" name="ngoc">
                                 <option value="#">-- Không chọn --</option>
                                 <option value="co">Có</option>
@@ -74,7 +74,7 @@
                                 <option value="nickcodt">Nick có SĐT</option>
                             </select>
 
-                            <button type="submit">Tìm kiếm</button>
+                            <button type="submit" style="margin-left: 10px">Tìm kiếm</button>
                         </div>
                     </form>
                     <div class="product_list">
