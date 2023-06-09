@@ -133,27 +133,99 @@ public class ChangeControl extends HttpServlet {
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-    
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lap Trinh Web</title>
-    
+
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
-    <body>
-        <h1> Change password form </h1><!-- comment -->
-        <h3 style="color: red"> ${requestScope.ms} </h3>
-        <form action="change">
-            Old password:<input type="password" name="opass"/><br/><!-- comment -->
-            <input type="hidden" name="user" value="${sessionScope.account.username}"/>
-            New password:<input type="password" name="pass"/><br/><!-- comment -->
-            Confirm password:<input type="password" name="rpass"/><br/><!-- comment -->
-            <input type="submit" value="CHANGE"/>
-        </form>
-    </body>
+<body>
+    <!-- HEADER -->
+    <div class="wrapper">
+        <div class="header">
+            <a class="logo" href="./index.html">SHOPGAMEPTIT</a>
+            <ul class="nav">
+                <li>
+                    <a href="#">TRANG CHỦ</a>
+                </li>
+                <li>NẠP TIỀN</li>
+                <li>LỊCH SỬ</li>
+                <li>
+                    <a href="./login.html">ĐĂNG NHẬP</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="main-content">
+            <div class="container">
+                <h1>Change Password</h1>
+                <form action="">
+
+                    <div class="form-control">
+                        <input type="password" id="password" placeholder="Password" />
+                        <span></span>
+                        <small></small>
+                    </div>
+                    
+                    <div class="form-control">
+                        <input type="password" id="password" placeholder="New password" />
+                        <span></span>
+                        <small></small>
+                    </div>
+                    
+                    <div class="form-control">
+                        <input type="password" id="password" placeholder="Confirm password" />
+                        <span></span>
+                        <small></small>
+                    </div>
+
+                    <input type="submit" value="Change" />
+                    <div class="signup_link">You forgot your password? <a href="#">Register</a></div>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="row"> 
+                <div class="colleft">
+                    <p style="text-align: center">
+                        <img alt src="363702E7D65883-87B7-4EF0-B262-573E92083519.gif" width="20%" height="10%">
+                     </p>
+                     <p style="text-align: center">
+                        <span style="color:#ffffff"> 
+                        <strong> LTWEB.VN</strong>
+                        <strong> <br> Shop chính chủ của LTWEB </strong>
+                        </span>
+                    </p>
+                 </div>
+                <div class="colright">
+                    <p> 
+                        <span style="color:#ffffff">
+                           <strong> 
+                            CHÚNG TÔI Ở ĐÂY
+                            <br> 
+                            Chúng tôi luôn lấy uy tín đặt trên hàng đầu đối với khách hàng, hy vọng chúng tôi sẽ được phục vụ các bạn. Cám ơn!
+                            <br> 
+                            Thời gian hỗ trợ:
+                            <br> Sáng: 8h00 -> 11h30 | Chiều: 13h00 -> 22h00
+                            <br> Hotline: 036.244.3838
+                           </strong>
+                        </span>
+                    </p>
+                    <p> <a href="https://www.facebook.com/"> <img src="Chat-2.gif" style="height: 66px; width: 200px;"></a> </p>
+                </div>
+            </div>
+    </div>
+
+        <script src="./app.js"></script>
+    </div>
+</body>
+
 </html>
+
 
 
