@@ -7,9 +7,12 @@ package control;
 
 import dao.DAO;
 import entity.Account;
+import entity.History;
 import entity.Product;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
+import javax.enterprise.context.SessionScoped;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,8 +24,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author Duong Nguyen
  */
-@WebServlet(name = "QLSPControl", urlPatterns = {"/qlsp"})
-public class QLSPControl extends HttpServlet {
+@WebServlet(name = "VNPAYReturnControl", urlPatterns = {"/vnpayreturn"})
+public class VNPAYReturnControl extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,30 +39,31 @@ public class QLSPControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        DAO dao = new DAO();
-//        List<Product> list= dao.getAlProduct();
-//        
-//        request.setAttribute("ListP", list);
-        String indexP = request.getParameter("index");
-        if (indexP == null) {
-            indexP = "1";
-        }
-        int index = Integer.parseInt(indexP);
-//        List<Product> list = dao.getAlProduct();
-        List<Product> list = dao.pageProduct(index, 3);
-        request.setAttribute("ListP", list);
-        int count = dao.getTotalProduct();
-        int endPage = count / 3;
-        if (count % 3 != 0) {
-            endPage++;
-        }
-        request.setAttribute("endP", endPage);
-        request.setAttribute("cnt", index);
-
+        request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
         Account accountObject = (Account) session.getAttribute("account");
-        if (accountObject.getIsAdmin() == 1) {
-            request.getRequestDispatcher("QLSP.jsp").forward(request, response);
+        Product productObject = (Product) session.getAttribute("nick");
+
+        if ("00".equals(request.getParameter("vnp_ResponseCode"))) {
+            String date = request.getParameter("vnp_PayDate");
+            int uID = accountObject.getuID();
+            int id = productObject.getId();
+            String taikhoan = productObject.getTaikhoan();
+            String matkhau = productObject.getMatkhau();
+            int price = productObject.getPrice();
+
+//            String date = "20230808";
+//            int uID = 3;
+//            int id = 3;
+//            String taikhoan = "duongtest";
+//            String matkhau = "mk1";
+//            int price = 286286;
+            DAO dao = new DAO();
+            dao.addHistory(date, uID, id, taikhoan, matkhau, price);
+            
+            response.sendRedirect("history");
+        } else {
+
         }
     }
 

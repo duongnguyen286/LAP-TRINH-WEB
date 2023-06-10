@@ -7,8 +7,9 @@ package control;
 
 import dao.DAO;
 import entity.Account;
-import entity.Product;
+import entity.History;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,8 +22,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author Duong Nguyen
  */
-@WebServlet(name = "QLSPControl", urlPatterns = {"/qlsp"})
-public class QLSPControl extends HttpServlet {
+@WebServlet(name = "HistoryControl", urlPatterns = {"/history"})
+public class HistoryControl extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,31 +37,14 @@ public class QLSPControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        DAO dao = new DAO();
-//        List<Product> list= dao.getAlProduct();
-//        
-//        request.setAttribute("ListP", list);
-        String indexP = request.getParameter("index");
-        if (indexP == null) {
-            indexP = "1";
-        }
-        int index = Integer.parseInt(indexP);
-//        List<Product> list = dao.getAlProduct();
-        List<Product> list = dao.pageProduct(index, 3);
-        request.setAttribute("ListP", list);
-        int count = dao.getTotalProduct();
-        int endPage = count / 3;
-        if (count % 3 != 0) {
-            endPage++;
-        }
-        request.setAttribute("endP", endPage);
-        request.setAttribute("cnt", index);
-
         HttpSession session = request.getSession();
         Account accountObject = (Account) session.getAttribute("account");
-        if (accountObject.getIsAdmin() == 1) {
-            request.getRequestDispatcher("QLSP.jsp").forward(request, response);
-        }
+        int uID = accountObject.getuID();
+        
+        DAO dao = new DAO();
+        List<History> list = dao.getHistorybyUID(uID);
+        request.setAttribute("ListH", list);
+        request.getRequestDispatcher("History.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

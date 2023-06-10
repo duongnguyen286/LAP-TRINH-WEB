@@ -10,7 +10,7 @@
     <a class="logo" href="home">SHOPGAMEPTIT</a>
     <ul class="nav">
         <li>
-            <a href="#">TRANG CHỦ</a>
+            <a href="home">TRANG CHỦ</a>
         </li>
         <c:if test="${sessionScope.account == null}">
             <li>
@@ -32,10 +32,10 @@
                 <a href="#">NẠP TIỀN</a>
             </li>
             <li>
-                <a href="#">LỊCH SỬ</a>
+                <a href="history">LỊCH SỬ</a>
             </li>
             <li>
-                <a style="color: red" href="#">${account.username}</a>
+                <a style="color: red" href="history">${account.username}</a>
             </li>
             <li>
                 <a href="logout">ĐĂNG XUẤT</a>

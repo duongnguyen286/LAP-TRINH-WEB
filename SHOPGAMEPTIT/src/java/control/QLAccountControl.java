@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -53,7 +54,12 @@ public class QLAccountControl extends HttpServlet {
         }
         request.setAttribute("endP", endPage);
         request.setAttribute("cnt", index);
-        request.getRequestDispatcher("QLAccount.jsp").forward(request, response);
+        
+        HttpSession session = request.getSession();
+        Account accountObject = (Account) session.getAttribute("account");
+        if (accountObject.getIsAdmin() == 1) {
+            request.getRequestDispatcher("QLAccount.jsp").forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

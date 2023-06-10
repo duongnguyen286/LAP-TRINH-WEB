@@ -48,7 +48,7 @@
                 if (checkOrderStatus) {
                     if ("00".equals(request.getParameter("vnp_ResponseCode"))) {
                         //Xử lý/Cập nhật tình trạng giao dịch thanh toán "Thành công"
-                        // out.print("GD Thanh cong");
+                         out.print("GD Thanh cong");
                     } else {
                         //Xử lý/Cập nhật tình trạng giao dịch thanh toán "Không thành công"
                         //  out.print("GD Khong thanh cong");

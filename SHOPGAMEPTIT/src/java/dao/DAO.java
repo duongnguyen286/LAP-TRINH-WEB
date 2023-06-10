@@ -8,12 +8,17 @@ package dao;
 import context.DBContext;
 import control.EditAccountControl;
 import entity.Account;
+import entity.History;
 import entity.Image;
 import entity.Product;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -146,6 +151,32 @@ public class DAO {
         return null;
     }
 
+    public List<History> getHistorybyUID(int uID) {
+        String query = "select * from history where uID = ?";
+        List<History> list = new ArrayList<>();
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, uID);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                SimpleDateFormat inputFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+                SimpleDateFormat outputFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                String dateStr = rs.getString(1);
+                Date date = inputFormat.parse(dateStr);
+                String formattedDateStr = outputFormat.format(date);
+                list.add(new History(formattedDateStr,
+                        rs.getInt(2),
+                        rs.getInt(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getInt(6)));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
     public void addProduct(String image, String id, String descripsion, String rank, String ngoc, String tuong, String trang_phuc, String loai_nick, String price, String taikhoan, String matkhau) {
         String query = "insert into product_item (image,id,descripsion,rank,ngoc,tuong,trang_phuc,loai_nick,price,taikhoan,matkhau)\n"
                 + "values (?,?,?,?,?,?,?,?,?,?,?)";
@@ -166,7 +197,35 @@ public class DAO {
             ps.executeUpdate();
         } catch (Exception e) {
         }
-        System.out.println(query);
+    }
+
+    public void addHistory(String date, int uID, int id, String taikhoan, String matkhau, int price) {
+        String query = "INSERT INTO [dbo].[history]\n"
+                + "           ([date]\n"
+                + "           ,[uID]\n"
+                + "           ,[id]\n"
+                + "           ,[taikhoan]\n"
+                + "           ,[matkhau]\n"
+                + "           ,[price])\n"
+                + "     VALUES\n"
+                + "           (?\n"
+                + "           ,?\n"
+                + "           ,?\n"
+                + "           ,?\n"
+                + "           ,?\n"
+                + "           ,?)";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, date);
+            ps.setInt(2, uID);
+            ps.setInt(3, id);
+            ps.setString(4, taikhoan);
+            ps.setString(5, matkhau);
+            ps.setInt(6, price);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
     }
 
     public void editProduct(String image, String id, String descripsion, String rank, String ngoc, String tuong, String trang_phuc, String loai_nick, String price, String taikhoan, String matkhau) {
@@ -430,18 +489,8 @@ public class DAO {
 
     public static void main(String[] args) {
         DAO dao = new DAO();
-        List<Product> list = dao.getAlProduct();
-
-        for (Product o : list) {
-//            System.out.println(o);
-        }
-        String testString = "2";
-        Product a = dao.getProductbyID(testString);
-        System.out.println(a);
-        Account z = dao.checkLogin("duong", "12");
-        System.out.println(z);
-//        dao.addProduct("test", "test", "test", "test", "test", "test", "test", "test", "test");
-//        dao.deleteProduct("1");
+//        dao.addHistory("20230609204430", 3,2, "qwet", "matqekhau", 8888);
+        System.out.println(dao.getHistorybyUID(18));
     }
 
     public Product getProductbyID() {

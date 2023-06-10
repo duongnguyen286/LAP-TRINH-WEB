@@ -91,8 +91,7 @@
                             if (signValue.equals(vnp_SecureHash)) {
                                 if ("00".equals(request.getParameter("vnp_TransactionStatus"))) {
                                     out.println("Success");
-                                    
-                                    out.println("\nBạn có thể xem lại thông tin nick đã mua tại lịch sử");
+                                    out.println("\nBạn có thể xem lại thông tin nick đã mua tại Lịch sử ");
                                 } else {
                                     out.print("Failed");
                                 }
