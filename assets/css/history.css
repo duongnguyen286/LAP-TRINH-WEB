@@ -1,0 +1,50 @@
+.Inforcus{
+    margin-top: 40px;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    letter-spacing: 5px;
+}
+.Account{
+    margin-left: -30%;
+    color: black;
+    margin-top: 10px;
+    letter-spacing: normal;
+}
+.Password{
+    margin-left: -29.5%;
+    margin-top: 5px;
+    color: black;
+    letter-spacing: normal;
+}
+.FName{
+    margin-left: auto;
+    margin-top: 5px;
+    letter-spacing: normal;
+    margin-left: -23%;
+}
+.LName{
+    margin-left: auto;
+    margin-top: 5px;
+    letter-spacing: normal;
+    margin-left: -24%;
+}
+.Email{
+    margin-left: auto;
+    margin-top: 5px;
+    letter-spacing: normal;
+    margin-left: -26%;
+}
+.Money{
+    margin-left: auto;
+    margin-top: 5px;
+    letter-spacing: normal;
+    margin-left: -36%;
+}
+.table{
+    margin-left: auto;
+    margin-top: 60px;
+    letter-spacing: normal;
+
+}
+
+

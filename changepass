@@ -1,0 +1,234 @@
+1. Add code
+packge dao
+// class DAO
+
+public void change(String user, String pass) {
+        String query="update admin set password=? where username=?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, user);
+            ps.setString(2, pass);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+  
+2. create ChangeControl.java in package controll
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package control;
+
+import dao.DAO;
+import entity.Account;
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import sun.security.util.Password;
+import util.MaHoa;
+
+/**
+ *
+ * @author Duong Nguyen
+ */
+@WebServlet(name = "ChangeControl", urlPatterns = {"/Change"})
+public class ChangeControl extends HttpServlet {
+
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    protected void toGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+
+        String username = request.getParameter("user");
+        String pass = MaHoa.md5(request.getParameter("pass"));
+        String newpass = MaHoa.md5(request.getParameter("newpass"));
+        DAO dao = new DAO();
+        Account a = dao.checkLogin(username, pass);
+
+        if (a == null) {
+            //khong ton tai
+            String mess ="Pass word is incorrect";
+            request.setAttribute("mess", "Tài khoản hoặc Mật khẩu không chính xác");
+            request.getRequestDispatcher("Change.jsp").forward(request, response);
+        } else {
+            //dung pass
+            Account a =new Account(username, pass, a.getRole());
+            dao.Change(a);
+            HttpSession session = request.getSession();
+            session.setAttribute("account", a);
+            session.setMaxInactiveInterval(3600);
+            response.sendRedirect("Home.jsp");
+        }
+    }
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
+
+}
+
+
+
+
+3. Change.jsp
+<%-- 
+    Document   : change
+    Created on : Jun 9, 2023, 3:39:47 AM
+    Author     : Admin
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lap Trinh Web</title>
+
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+<body>
+    <!-- HEADER -->
+    <div class="wrapper">
+        <div class="header">
+            <a class="logo" href="./index.html">SHOPGAMEPTIT</a>
+            <ul class="nav">
+                <li>
+                    <a href="#">TRANG CHỦ</a>
+                </li>
+                <li>NẠP TIỀN</li>
+                <li>LỊCH SỬ</li>
+                <li>
+                    <a href="./login.html">ĐĂNG NHẬP</a>
+                </li>
+                <li> 
+                    <a href="./change.html"> ĐỔI MẬT KHẨU</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="main-content">
+            <div class="container">
+                <h1>Change Password</h1>
+                <form action="">
+
+                    <div class="form-control">
+                        <input type="password" id="password" placeholder="Password" />
+                        <span></span>
+                        <small></small>
+                    </div>
+                    
+                    <div class="form-control">
+                        <input type="password" id="password" placeholder="New password" />
+                        <span></span>
+                        <small></small>
+                    </div>
+                    
+                    <div class="form-control">
+                        <input type="password" id="password" placeholder="Confirm password" />
+                        <span></span>
+                        <small></small>
+                    </div>
+
+                    <input type="submit" value="Change" />
+                    <div class="signup_link">You forgot your password? <a href="#">Register</a></div>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="row"> 
+                <div class="colleft">
+                    <p style="text-align: center">
+                        <img alt src="363702E7D65883-87B7-4EF0-B262-573E92083519.gif" width="20%" height="10%">
+                     </p>
+                     <p style="text-align: center">
+                        <span style="color:#ffffff"> 
+                        <strong> LTWEB.VN</strong>
+                        <strong> <br> Shop chính chủ của LTWEB </strong>
+                        </span>
+                    </p>
+                 </div>
+                <div class="colright">
+                    <p> 
+                        <span style="color:#ffffff">
+                           <strong> 
+                            CHÚNG TÔI Ở ĐÂY
+                            <br> 
+                            Chúng tôi luôn lấy uy tín đặt trên hàng đầu đối với khách hàng, hy vọng chúng tôi sẽ được phục vụ các bạn. Cám ơn!
+                            <br> 
+                            Thời gian hỗ trợ:
+                            <br> Sáng: 8h00 -> 11h30 | Chiều: 13h00 -> 22h00
+                            <br> Hotline: 036.244.3838
+                           </strong>
+                        </span>
+                    </p>
+                    <p> <a href="https://www.facebook.com/"> <img src="Chat-2.gif" style="height: 66px; width: 200px;"></a> </p>
+                </div>
+            </div>
+    </div>
+
+        <script src="./app.js"></script>
+    </div>
+</body>
+
+</html>
+
+
+
