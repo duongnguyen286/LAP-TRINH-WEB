@@ -175,6 +175,18 @@ public final class EditProduct_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${detail.price}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("\" type=\"text\" name=\"price\" required></th>\n");
       out.write("                </tr>\n");
+      out.write("                <tr>\n");
+      out.write("                    <th>Tài khoản</th>\n");
+      out.write("                    <th><input value=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${detail.taikhoan}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("\" type=\"text\" name=\"taikhoan\" required></th>\n");
+      out.write("                </tr>\n");
+      out.write("                <tr>\n");
+      out.write("                    <th>Mật khẩu</th>\n");
+      out.write("                    <th><input value=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${detail.matkhau}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("\" type=\"text\" name=\"matkhau\" required></th>\n");
+      out.write("                </tr>\n");
       out.write("            </table>\n");
       out.write("\n");
       out.write("            <button type='submit'>SAVE</button>\n");

@@ -83,7 +83,7 @@
                         <div class="product_item">
                             <div class="image">
                                 <a href="detail?pid=${o.id}">
-                                    <img src="https://lienquan24h.com/upload/product/4aa2e4a1bdca94737c3c20ac41f4c604.gif">
+                                    <img src="${o.image}">
                                     <span class="ID">ID: ${o.id}</span>
                                 </a>
                             </div>

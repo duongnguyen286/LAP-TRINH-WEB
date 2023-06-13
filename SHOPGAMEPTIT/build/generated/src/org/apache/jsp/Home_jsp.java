@@ -12,6 +12,7 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
   private static java.util.List<String> _jspx_dependants;
 
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_forEach_var_items;
+  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_forEach_var_end_begin;
 
   private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
 
@@ -21,10 +22,12 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
 
   public void _jspInit() {
     _jspx_tagPool_c_forEach_var_items = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _jspx_tagPool_c_forEach_var_end_begin = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
   }
 
   public void _jspDestroy() {
     _jspx_tagPool_c_forEach_var_items.release();
+    _jspx_tagPool_c_forEach_var_end_begin.release();
   }
 
   public void _jspService(HttpServletRequest request, HttpServletResponse response)
@@ -102,7 +105,7 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                        <div class=\"a\">\n");
       out.write("                            <label for=\"keyword\">Tìm kiếm</label>\n");
       out.write("                            <input type=\"text\" id=\"keyword\" name=\"txt\" placeholder=\"Nhập từ khóa...\">\n");
-      out.write("                            <label for=\"maso\">Mã Số</label>\n");
+      out.write("                            <label for=\"maso\" style=\"padding-left: 24px\">Mã Số</label>\n");
       out.write("                            <input type=\"text\" id=\"maso\" name=\"maso\" placeholder=\"Nhập id...\">\n");
       out.write("                            <label for=\"giatien\">Giá tiền</label>\n");
       out.write("                            <select id=\"giatien\" name=\"giatien\">\n");
@@ -116,7 +119,7 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                            </select>\n");
       out.write("                        </div>\n");
       out.write("                        <div class=\"b\">\n");
-      out.write("                            <label for=\"ngoc\">Ngọc 90</label>\n");
+      out.write("                            <label for=\"ngoc\" style=\"padding-left: 8px\">Ngọc 90</label>\n");
       out.write("                            <select id=\"ngoc\" name=\"ngoc\">\n");
       out.write("                                <option value=\"#\">-- Không chọn --</option>\n");
       out.write("                                <option value=\"co\">Có</option>\n");
@@ -129,7 +132,7 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                <option value=\"nickcodt\">Nick có SĐT</option>\n");
       out.write("                            </select>\n");
       out.write("\n");
-      out.write("                            <button type=\"submit\">Tìm kiếm</button>\n");
+      out.write("                            <button type=\"submit\" style=\"margin-left: 10px\">Tìm kiếm</button>\n");
       out.write("                        </div>\n");
       out.write("                    </form>\n");
       out.write("                    <div class=\"product_list\">\n");
@@ -143,11 +146,74 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                </div>\n");
       out.write("            </div>\n");
       out.write("\n");
+      out.write("            <div class=\"center\">\n");
+      out.write("                <div class=\"pagination\">\n");
+      out.write("                    ");
+      if (_jspx_meth_c_forEach_1(_jspx_page_context))
+        return;
+      out.write("\n");
+      out.write("                </div>\n");
+      out.write("            </div>\n");
       out.write("\n");
       out.write("\n");
       out.write("            ");
       org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "Footer.jsp", out, false);
       out.write("\n");
+      out.write("            \n");
+      out.write("            <div id=\"abc\">\n");
+      out.write("                <div id=\"abd\">\n");
+      out.write("                    <div id=\"hoa1\">\n");
+      out.write("                        <h3> Xác nhận mua tài khoản</h3>\n");
+      out.write("                    </div>\n");
+      out.write("                    <div id=\"hoa2\">\n");
+      out.write("                        <h4> Thông tin nick #");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${sessionScope.pro.id}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("</h4>\n");
+      out.write("                        <table>\n");
+      out.write("                            <tr>\n");
+      out.write("                                <td>Nhà cung cấp</td>\n");
+      out.write("                                <th >SHOPGAMEPTIT</th>\n");
+      out.write("\n");
+      out.write("                            </tr>\n");
+      out.write("                            <tr>\n");
+      out.write("                                <td>Tên game</td>\n");
+      out.write("                                <th style=\"color:black ;\">Liên Quân Mobile</th>\n");
+      out.write("\n");
+      out.write("                            </tr>\n");
+      out.write("                            <tr>\n");
+      out.write("                                <td>Giá Tiền</td>\n");
+      out.write("                                <th style=\"color:#28b8cf ;\">");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${sessionScope.pro.price}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("</th>\n");
+      out.write("\n");
+      out.write("                            </tr>\n");
+      out.write("\n");
+      out.write("                        </table>\n");
+      out.write("                    </div>\n");
+      out.write("                    <div id=\"hoa3\">\n");
+      out.write("                        <!--                        <form action=\"buy1\" method=\"post\">\n");
+      out.write("                                                    <button style=\"float: right;\" type=\"button\" onclick=\"closeForm()\">Đóng</button>\n");
+      out.write("                                                    <input type=\"hidden\" name=\"price\" value=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${sessionScope.pro.price}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("\">\n");
+      out.write("                                                    <input type=\"hidden\" name=\"sodu\" value=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${sessionScope.account.sodu}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("\">\n");
+      out.write("                                                    <div>");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${mess}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("</div>\n");
+      out.write("                                                    <button style=\"float: right; background-color: aliceblue;\">Xác nhận mua</button>\n");
+      out.write("                                                </form>-->\n");
+      out.write("                        <button style=\"float: right;\" type=\"button\" onclick=\"closeForm()\">Đóng</button>\n");
+      out.write("                        <!-- <button style=\"float: right; background-color: aliceblue;\" type=\"submit\">Xác nhận mua</button> -->\n");
+      out.write("                        <button style=\"float: right; background-color: aliceblue;\"><a style=\"text-decoration: none;color: black;\" href=\"buy1?pid=");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${detail.id}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("\">Xác nhận mua</a> </button>\n");
+      out.write("                    </div>\n");
+      out.write("                </div>\n");
+      out.write("            </div>\n");
+      out.write("            <script src=\"js/xacnhan.js\"></script>\n");
+      out.write("            \n");
       out.write("        </div>\n");
       out.write("    </body>\n");
       out.write("\n");
@@ -186,7 +252,9 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
           out.write("                                <a href=\"detail?pid=");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${o.id}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("\">\n");
-          out.write("                                    <img src=\"https://lienquan24h.com/upload/product/4aa2e4a1bdca94737c3c20ac41f4c604.gif\">\n");
+          out.write("                                    <img src=\"");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${o.image}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("\">\n");
           out.write("                                    <span class=\"ID\">ID: ");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${o.id}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("</span>\n");
@@ -253,6 +321,51 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
     } finally {
       _jspx_th_c_forEach_0.doFinally();
       _jspx_tagPool_c_forEach_var_items.reuse(_jspx_th_c_forEach_0);
+    }
+    return false;
+  }
+
+  private boolean _jspx_meth_c_forEach_1(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:forEach
+    org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_1 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_end_begin.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
+    _jspx_th_c_forEach_1.setPageContext(_jspx_page_context);
+    _jspx_th_c_forEach_1.setParent(null);
+    _jspx_th_c_forEach_1.setBegin(1);
+    _jspx_th_c_forEach_1.setEnd(((java.lang.Integer) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${endP}", java.lang.Integer.class, (PageContext)_jspx_page_context, null)).intValue());
+    _jspx_th_c_forEach_1.setVar("i");
+    int[] _jspx_push_body_count_c_forEach_1 = new int[] { 0 };
+    try {
+      int _jspx_eval_c_forEach_1 = _jspx_th_c_forEach_1.doStartTag();
+      if (_jspx_eval_c_forEach_1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+        do {
+          out.write("\n");
+          out.write("                        <a class=\"");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${cnt==i?\"active\":\"\"}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("\" href=\"home?index=");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${i}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write('"');
+          out.write('>');
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${i}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</a>\n");
+          out.write("                    ");
+          int evalDoAfterBody = _jspx_th_c_forEach_1.doAfterBody();
+          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+            break;
+        } while (true);
+      }
+      if (_jspx_th_c_forEach_1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_c_forEach_1[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_c_forEach_1.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_c_forEach_1.doFinally();
+      _jspx_tagPool_c_forEach_var_end_begin.reuse(_jspx_th_c_forEach_1);
     }
     return false;
   }

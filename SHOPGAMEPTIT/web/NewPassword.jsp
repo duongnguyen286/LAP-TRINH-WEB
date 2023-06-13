@@ -26,12 +26,12 @@
                         <h1>Reset Password</h1>
                         <form action="newpassword" method="post">
                             <div class="form-control">
-                                <input name="pass" type="password" id="password" placeholder="Password" />
+                                <input name="password" type="password" id="password" placeholder="Password" />
                                 <span></span>
                                 <small></small>
                             </div>
                             <div class="form-control">
-                                <input type="password" id="confpassword" placeholder="Confirm password" />
+                                <input name="confPassword" type="password" id="confpassword" placeholder="Confirm password" />
                                 <span></span>
                                 <small></small>
                             </div>

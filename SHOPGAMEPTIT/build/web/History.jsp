@@ -37,6 +37,9 @@
             table tr:nth-child(1){
                 background-color:skyblue;
             }
+            h3 {
+                padding: 4px 0;
+            }
         </style>
 
     </head>
@@ -47,9 +50,11 @@
                 <div class="main-content" style="display: block; padding: 48px 32px ">
                     <h2 style="text-align: center">THÔNG TIN TÀI KHOẢN</h2>
                     <h3>User name: ${sessionScope.account.username}</h3>
-                <h3 style="padding-bottom: 48px">Pass: <a href="">Đổi mật khẩu</a></h3>
+                <h3>Pass: <a href="ChangePass.jsp">Đổi mật khẩu</a></h3>
+                <h3> Email: ${sessionScope.account.email}</h3>
+                <h3 style="padding-bottom: 48px">Số dư tài khoản: ${sessionScope.account.sodu}đ</h3>
                 <hr/>
-                <h2 style="padding-top: 48px; text-align: center">LỊCH SỬ GIAO DỊCH</h2>
+                <h2 style="padding-top: 48px; text-align: center; padding-bottom: 4px">LỊCH SỬ GIAO DỊCH</h2>
                 <table>
                     <tr>
                         <th>STT</th>

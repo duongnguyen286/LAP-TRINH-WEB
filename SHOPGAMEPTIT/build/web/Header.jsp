@@ -27,15 +27,17 @@
             </li>
         </c:if> 
         <c:if test="${sessionScope.account != null}">
-
             <li>
-                <a href="#">NẠP TIỀN</a>
+                <a id="xacnhan" href="#">NẠP VÍ - ATM</a>
+            </li>
+            <li>
+                <a href="NapThe.jsp">NẠP THẺ</a>
             </li>
             <li>
                 <a href="history">LỊCH SỬ</a>
             </li>
             <li>
-                <a style="color: red" href="history">${account.username}</a>
+                <a style="color: red" href="history">${account.username} ۰ ${sessionScope.account.sodu}đ</a>
             </li>
             <li>
                 <a href="logout">ĐĂNG XUẤT</a>

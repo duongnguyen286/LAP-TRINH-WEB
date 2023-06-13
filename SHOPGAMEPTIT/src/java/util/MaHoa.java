@@ -4,11 +4,6 @@
  * and open the template in the editor.
  */
 package util;
-
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
 /**
  *
  * @author Duong Nguyen

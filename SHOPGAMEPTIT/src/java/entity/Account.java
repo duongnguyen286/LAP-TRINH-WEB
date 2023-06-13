@@ -15,16 +15,18 @@ public class Account {
     private String pass;
     private int isAdmin;
     private String email;
+    private int sodu;
 
     public Account() {
     }
 
-    public Account(int uID, String username, String pass, int isAdmin, String email) {
+    public Account(int uID, String username, String pass, int isAdmin, String email,int sodu) {
         this.uID = uID;
         this.username = username;
         this.pass = pass;
         this.isAdmin = isAdmin;
         this.email = email;
+        this.sodu = sodu;
     }
 
     public int getuID() {
@@ -63,14 +65,24 @@ public class Account {
         return email;
     }
 
+    public int getSodu() {
+        return sodu;
+    }
+
+    public void setSodu(int sodu) {
+        this.sodu = sodu;
+    }
+
     public void setEmail(String email) {
         this.email = email;
     }
 
     @Override
     public String toString() {
-        return "Account{" + "uID=" + uID + ", username=" + username + ", pass=" + pass + ", isAdmin=" + isAdmin + ", email=" + email + '}';
+        return "Account{" + "uID=" + uID + ", username=" + username + ", pass=" + pass + ", isAdmin=" + isAdmin + ", email=" + email + ", sodu=" + sodu + '}';
     }
+
+   
     
 }
 

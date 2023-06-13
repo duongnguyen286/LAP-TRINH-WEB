@@ -5,7 +5,7 @@ package control;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+import dao.DAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import util.MaHoa;
 
 /**
  *
@@ -45,20 +46,15 @@ public class NewPasswordControl extends HttpServlet {
         if (newPassword != null && confPassword != null && newPassword.equals(confPassword)) {
 
             try {
-                Class.forName("com.mysql.jdbc.Driver");
-                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/youtube?useSSL=false", "root",
-                        "root");
-                PreparedStatement pst = con.prepareStatement("update users set upwd = ? where uemail = ? ");
-                pst.setString(1, newPassword);
-                pst.setString(2, (String) session.getAttribute("email"));
-
-                int rowCount = pst.executeUpdate();
+                DAO dao = new DAO();
+                String email = (String) session.getAttribute("email");
+                int rowCount = dao.resetPass(MaHoa.md5(newPassword), email);
                 if (rowCount > 0) {
                     request.setAttribute("status", "resetSuccess");
-                    dispatcher = request.getRequestDispatcher("login.jsp");
+                    dispatcher = request.getRequestDispatcher("Login.jsp");
                 } else {
                     request.setAttribute("status", "resetFailed");
-                    dispatcher = request.getRequestDispatcher("login.jsp");
+                    dispatcher = request.getRequestDispatcher("Login.jsp");
                 }
                 dispatcher.forward(request, response);
             } catch (Exception e) {

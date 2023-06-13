@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -41,6 +42,8 @@ public class DetailControl extends HttpServlet {
         request.setAttribute("detail", p);
         Image i = dao.getImagebyID(id);
         request.setAttribute("img", i);
+        HttpSession session = request.getSession();
+        session.setAttribute("pro", p);
         request.getRequestDispatcher("Detail.jsp").forward(request, response);
     }
 

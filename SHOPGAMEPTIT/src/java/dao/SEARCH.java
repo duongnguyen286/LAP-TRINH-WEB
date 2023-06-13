@@ -235,7 +235,8 @@ public class SEARCH {
                         rs.getString(3),
                         rs.getString(4),
                         rs.getInt(5),
-                        rs.getString(6)
+                        rs.getString(6),
+                        rs.getInt(7)
                 ));
             }
         } catch (Exception e) {

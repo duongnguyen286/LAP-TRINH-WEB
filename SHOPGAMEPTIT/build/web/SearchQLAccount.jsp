@@ -41,9 +41,9 @@
                 background-color: #ddd;
             }
             .search-form {
-               
+
                 margin-left: 965px;
-                
+
             }
         </style>
     </head>
@@ -57,6 +57,11 @@
             <a class="col-2" href="qlaccount">
                 <div style="background-color: #4CAF50" >
                     QUẢN LÍ TÀI KHOẢN
+                </div>
+            </a>
+            <a class="col-2" href="qlnaptien">
+                <div style="background-color: #f2f2f2" >
+                    QUẢN LÍ NẠP TIỀN
                 </div>
             </a>
         </div>

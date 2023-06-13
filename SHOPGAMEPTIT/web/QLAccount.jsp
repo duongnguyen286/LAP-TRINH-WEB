@@ -59,6 +59,11 @@
                     QUẢN LÍ TÀI KHOẢN
                 </div>
             </a>
+            <a class="col-2" href="qlnaptien">
+                <div style="background-color: #f2f2f2" >
+                    QUẢN LÍ NẠP TIỀN
+                </div>
+            </a>
         </div>
         <div class="abc">
             <a href="home"><button>HOME</button></a>

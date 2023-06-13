@@ -29,20 +29,20 @@
                 line-height: 1.5;
             }
 
-            table {
+            .main-content table {
                 border-collapse: collapse;
                 width: 80%;
                 margin-top: 48px;
             }
 
-            th,
+            .main-content table th,
             td {
                 text-align: left;
                 padding: 8px;
                 border: 1px solid #ccc;
             }
 
-            th {
+            .main-content table th {
                 background-color: #333;
                 color: white;
                 width: 20%;
@@ -70,7 +70,7 @@
                 color: white;
             }
 
-            button {
+            .main-content button {
                 width: 80%;
                 height: 48px;
                 background-color: #32c5d2;
@@ -78,6 +78,11 @@
                 font-weight: bold;
                 font-size: 20px;
                 border: none;
+            }
+
+            .aaa h4{
+                margin-top: 100px;
+                padding: 0;
             }
 
         </style>
@@ -123,8 +128,17 @@
                         <th>Giá:</th>
                         <td>${detail.price}</td>
                     </tr>
+                    <c:if test="${not empty mess}">
+                    <tr>
+                        <th>Thông báo:</th>
+                        <td style="color: red">${mess}</td>
+                    </tr>
+                    </c:if>
                 </table>
-                <button><a href="buy?pid=${detail.id}">MUA</a> </button>
+                        <button><a style="color: white" href="buy?pid=${detail.id}">THANH TOÁN TRỰC TIẾP</a> </button>
+                        <div style="height: 8px; width: 100%"></div>
+                <!--<button><a href="buy1?pid=${detail.id}">MUA NGAY</a> </button>-->
+                        <button id="xacnhan">MUA NGAY</button>
                 <img src="${img.a1}" alt="Ảnh sản phẩm">
                 <img src="${img.a2}" alt="Ảnh sản phẩm">
                 <img src="${img.a3}" alt="Ảnh sản phẩm">
@@ -134,6 +148,47 @@
                 <img src="${img.a7}" alt="Ảnh sản phẩm">
 
             </div>
+                <div id="abc">
+                <div id="abd">
+                    <div id="hoa1">
+                        <h3> Xác nhận mua tài khoản</h3>
+                    </div>
+                    <div id="hoa2">
+                        <h4> Thông tin nick #${sessionScope.pro.id}</h4>
+                        <table>
+                            <tr>
+                                <td>Nhà cung cấp</td>
+                                <th >SHOPGAMEPTIT</th>
+
+                            </tr>
+                            <tr>
+                                <td>Tên game</td>
+                                <th style="color:black ;">Liên Quân Mobile</th>
+
+                            </tr>
+                            <tr>
+                                <td>Giá Tiền</td>
+                                <th style="color:#28b8cf ;">${sessionScope.pro.price}</th>
+
+                            </tr>
+
+                        </table>
+                    </div>
+                    <div id="hoa3">
+                        <!--                        <form action="buy1" method="post">
+                                                    <button style="float: right;" type="button" onclick="closeForm()">Đóng</button>
+                                                    <input type="hidden" name="price" value="${sessionScope.pro.price}">
+                                                    <input type="hidden" name="sodu" value="${sessionScope.account.sodu}">
+                                                    <div>${mess}</div>
+                                                    <button style="float: right; background-color: aliceblue;">Xác nhận mua</button>
+                                                </form>-->
+                        <button style="float: right;" type="button" onclick="closeForm()">Đóng</button>
+                        <!-- <button style="float: right; background-color: aliceblue;" type="submit">Xác nhận mua</button> -->
+                        <button style="float: right; background-color: aliceblue;"><a style="text-decoration: none;color: black;" href="buy1?pid=${detail.id}">Xác nhận mua</a> </button>
+                    </div>
+                </div>
+            </div>
+            <script src="js/xacnhan.js"></script>
 
             <jsp:include page="Footer.jsp"></jsp:include>
         </div>

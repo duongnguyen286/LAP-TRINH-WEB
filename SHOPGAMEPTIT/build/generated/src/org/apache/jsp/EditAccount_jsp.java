@@ -154,13 +154,12 @@ public final class EditAccount_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                <tr>\n");
       out.write("                    <th>QUYỀN HẠN</th>\n");
       out.write("                    <th>\n");
-      out.write("                        <select name=\"role\">\n");
+      out.write("                        <select name=\"isAdmin\">\n");
       out.write("                            <option value=\"0\">USER</option>\n");
       out.write("                            <option value=\"1\" ");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${account.isAdmin == 1 ? \"selected\" : \"\"}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write(">ADMIN</option>\n");
       out.write("                        </select>\n");
-      out.write("\n");
       out.write("                    </th>\n");
       out.write("                </tr>\n");
       out.write("            </table>\n");

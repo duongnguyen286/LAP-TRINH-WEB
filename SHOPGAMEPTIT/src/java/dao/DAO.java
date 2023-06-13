@@ -6,17 +6,15 @@
 package dao;
 
 import context.DBContext;
-import control.EditAccountControl;
 import entity.Account;
 import entity.History;
 import entity.Image;
 import entity.Product;
+import entity.TheCao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -70,7 +68,9 @@ public class DAO {
                         rs.getString(2),
                         rs.getString(3),
                         rs.getInt(4),
-                        rs.getString(5)));
+                        rs.getString(5),
+                        rs.getInt(6)
+                ));
             }
         } catch (Exception e) {
         }
@@ -143,7 +143,8 @@ public class DAO {
                         rs.getString(2),
                         rs.getString(3),
                         rs.getInt(4),
-                        rs.getString(5)
+                        rs.getString(5),
+                        rs.getInt(6)
                 );
             }
         } catch (Exception e) {
@@ -308,7 +309,7 @@ public class DAO {
 
     public Account sinUpAccount(String user, String pass, String email) {
         String query = "insert into account \n"
-                + "values (?,?,0,?)";
+                + "values (?,?,0,?,0)";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
@@ -335,7 +336,9 @@ public class DAO {
                         rs.getString(2),
                         rs.getString(3),
                         rs.getInt(4),
-                        rs.getString(5));
+                        rs.getString(5),
+                        rs.getInt(6)
+                );
             }
         } catch (Exception e) {
         }
@@ -357,27 +360,27 @@ public class DAO {
                         rs.getString(2),
                         rs.getString(3),
                         rs.getInt(4),
-                        rs.getString(5));
+                        rs.getString(5),
+                        rs.getInt(6)
+                );
             }
         } catch (Exception e) {
         }
         return null;
     }
 
-    public void resetPass(String email, String newpass) {
-//        String s = RandomStringUtils.randomAlphanumeric(11);
-
-        String query = "UPDATE account \n"
-                + "SET pass = ? \n"
-                + "WHERE email = ?";
+    public int resetPass(String newPassword, String email) {
+        String query = "update account set pass = ? where email = ?";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
-            ps.setString(1, newpass);
+            ps.setString(1, newPassword);
             ps.setString(2, email);
-            ps.executeUpdate();
+            int rowCount = ps.executeUpdate();
+            return rowCount;
         } catch (Exception e) {
         }
+        return 0;
     }
 
     public int getTotalProduct() {
@@ -457,7 +460,9 @@ public class DAO {
                         rs.getString(2),
                         rs.getString(3),
                         rs.getInt(4),
-                        rs.getString(5)));
+                        rs.getString(5),
+                        rs.getInt(6)
+                ));
             }
         } catch (Exception e) {
         }
@@ -487,10 +492,104 @@ public class DAO {
         return 0;
     }
 
+    public void addSoduAccount(String user, String menhgia) {
+        String query = "UPDATE account SET sodu =?\n"
+                + "where username=?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, menhgia);
+            ps.setString(2, user);
+
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
+    public TheCao checkMT(String loaithe, String menhgia, String mathe, String seri) {
+        String query = "select * from TheCao \n"
+                + "where loaithe=?\n"
+                + "and menhgia=?\n"
+                + "and mathe=?\n"
+                + "and seri=?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, loaithe);
+            ps.setString(2, menhgia);
+            ps.setString(3, mathe);
+            ps.setString(4, seri);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return new TheCao(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5)
+                );
+
+            }
+        } catch (Exception e) {
+        }
+        return null;
+
+    }
+
+    public Account getAccount(String username) {
+        String query = "select * from account\n"
+                + "where username = ?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, username);
+
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return new Account(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getInt(4),
+                        rs.getString(5),
+                        rs.getInt(6));
+            }
+        } catch (Exception e) {
+        }
+        return null;
+    }
+
+    public void changePass(String user, String pass) {
+        String query = "UPDATE account SET pass =?\n"
+                + "where username=?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, pass);
+            ps.setString(2, user);
+
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
+    public void congTien(String username, String sotiencong) {
+        String query = "UPDATE account SET sodu = sodu + ?\n"
+                + "where username=?"; 
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, sotiencong);
+            ps.setString(2, username);
+
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
     public static void main(String[] args) {
         DAO dao = new DAO();
 //        dao.addHistory("20230609204430", 3,2, "qwet", "matqekhau", 8888);
-        System.out.println(dao.getHistorybyUID(18));
+//        System.out.println(dao.getHistorybyUID(18));
     }
 
     public Product getProductbyID() {

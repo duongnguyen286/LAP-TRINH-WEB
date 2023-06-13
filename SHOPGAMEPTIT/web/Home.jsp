@@ -82,7 +82,7 @@
                         <div class="product_item">
                             <div class="image">
                                 <a href="detail?pid=${o.id}">
-                                    <img src="https://lienquan24h.com/upload/product/4aa2e4a1bdca94737c3c20ac41f4c604.gif">
+                                    <img src="${o.image}">
                                     <span class="ID">ID: ${o.id}</span>
                                 </a>
                             </div>
@@ -132,7 +132,41 @@
 
 
             <jsp:include page="Footer.jsp"></jsp:include>
+
         </div>
-    </body>
+            <div id="abc">
+            <div id="abd" style="width: 590px">
+                <div id="hoa1">
+                    <h3> Nạp tiền từ ATM hoặc Ví điện tử </h3>
+                </div>
+                <div id="hoa2">
+                    <h4> Tên chủ khoản: NGUYEN TUNG DUONG</h4>
+                    <table>
+                        <tr>
+                            <td>Techcombank</td>
+                            <th >6666286286</th>
+
+                        </tr>
+                        <tr>
+                            <td>Momo</td>
+                            <th>0123456789</th>
+
+                        </tr>
+
+                    </table>
+                    <h4>Khi chuyển tiền Quý khách vui lòng ghi CHÍNH XÁC NỘI DUNG:<br>
+                        Tên tài khoản trên shop<br>
+                        Ví dụ: Tên tài khoản của bạn là ptit bạn cần ghi nội dung sau: ptit <br>
+                        Sau khi chuyển xong, vui lòng chụp ảnh giao dịch thành công và gửi qua <a href="">Fanpage Chăm Sóc Khách Hàng</a>  để được hỗ trợ cộng tiền​​​​​​.</h4>
+                </div>
+                <div id="hoa3">
+                    <button style="float: right;" type="button" onclick="closeForm()">Đóng</button>
+                </div>
+            </div>
+        </div>
+        <script src="js/xacnhan.js"></script>
+
+    </div>
+</body>
 
 </html>
