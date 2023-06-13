@@ -2,24 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/SHOPGAMEPTIT/web/SearchQLSP.jsp</file>
-            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/SHOPGAMEPTIT/web/SearchTT.jsp</file>
-            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/SHOPGAMEPTIT/src/java/dao/DAO.java</file>
-            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/SHOPGAMEPTIT/src/java/entity/Image.java</file>
-            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/SHOPGAMEPTIT/web/SearchNgoc.jsp</file>
-            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/SHOPGAMEPTIT/web/SearchId.jsp</file>
-            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/SHOPGAMEPTIT/web/History.jsp</file>
-            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/SHOPGAMEPTIT/src/java/dao/SEARCH.java</file>
-            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/SHOPGAMEPTIT/src/java/entity/History.java</file>
-            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/SHOPGAMEPTIT/web/Home.jsp</file>
-            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/SHOPGAMEPTIT/web/assets/css/history.css</file>
-            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/SHOPGAMEPTIT/src/java/control/VNPAYReturnControl.java</file>
-            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/SHOPGAMEPTIT/web/SearchQLAccount.jsp</file>
-            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/SHOPGAMEPTIT/web/SearchPrice.jsp</file>
-            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/SHOPGAMEPTIT/src/java/entity/Account.java</file>
-            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/SHOPGAMEPTIT/web/SearchHome.jsp</file>
-            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/SHOPGAMEPTIT/src/java/control/HistoryControl.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

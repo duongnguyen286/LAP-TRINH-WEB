@@ -43,6 +43,7 @@
                     
                     <input type="submit" value="Sign In" />
                     <div class="signup_link">Don't have an account? <a href="#">Register</a></div>
+                    <div class="signup_link"><a href="ForgotPassword.jsp">I fogot my password</a></div>
                 </form>
             </div>
         </div>
